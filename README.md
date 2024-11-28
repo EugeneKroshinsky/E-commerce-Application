@@ -1,6 +1,6 @@
 # E-commerce-Application
 
-
+[Макет магазина](https://github.com/EugeneKroshinsky/E-commerce-Application/blob/main/Online-Shop.pdf)
 
 ### 1. Создание проекта (28.11)
 - Настройка окружения:
