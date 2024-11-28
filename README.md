@@ -2,6 +2,8 @@
 
 [Макет магазина](https://github.com/EugeneKroshinsky/E-commerce-Application/blob/main/Online-Shop.pdf)
 
+Стек технолигий: Java EE, Tomcat, Vue.js, Nginx
+
 ### 1. Создание проекта (28.11)
 - Настройка окружения:
   - Установка и конфигурация Apache Tomcat.
