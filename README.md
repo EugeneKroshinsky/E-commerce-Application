@@ -2,6 +2,8 @@
 
 [Макет магазина](https://github.com/EugeneKroshinsky/E-commerce-Application/blob/main/Online-Shop.pdf)
 
+[Макет базы данных](https://github.com/EugeneKroshinsky/E-commerce-Application/blob/main/database_model.png)
+
 Стек технолигий: Java EE, Tomcat, Vue.js, Nginx, PostgreSQL
 
 ### 1. Создание проекта (28.11)
