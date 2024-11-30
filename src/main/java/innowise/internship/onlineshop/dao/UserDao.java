@@ -5,7 +5,6 @@ import innowise.internship.onlineshop.utils.HibernateUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 
 import java.util.List;
 
@@ -13,54 +12,46 @@ import java.util.List;
 public class UserDao {
 
     private final static SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-    public void saveUser(User user) {
-        Transaction transaction = null;
-        try (Session session = sessionFactory.openSession()) {
-            transaction = session.beginTransaction();
+
+    public void save(User user) {
+        try (Session session = sessionFactory.getCurrentSession()) {
+            session.beginTransaction();
             session.save(user);
-            transaction.commit();
-        } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
-            log.error("Failed to save user", e);
+            session.getTransaction().commit();
         }
     }
-
-    public List<User> getUsers() {
-        try (Session session = sessionFactory.openSession()) {
-            return session.createQuery("FROM User", User.class).list();
+    public List<User> getAll() {
+        try (Session session = sessionFactory.getCurrentSession()) {
+            session.beginTransaction();
+            List<User> users = session
+                    .createQuery("select o from User o", User.class)
+                    .getResultList();
+            session.getTransaction().commit();
+            return users;
         }
     }
-
-    public void updateUser(User user) {
-        Transaction transaction = null;
-        try (Session session = sessionFactory.openSession()) {
-            transaction = session.beginTransaction();
-            session.update(user);
-            transaction.commit();
-        } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
-            log.error("Failed to update user", e);
+    public User getById(int id) {
+        try (Session session = sessionFactory.getCurrentSession()) {
+            session.beginTransaction();
+            User user = session.get(User.class, id);
+            session.getTransaction().commit();
+            return user;
         }
     }
-
-    public void deleteUser(Long userId) {
-        Transaction transaction = null;
-        try (Session session = sessionFactory.openSession()) {
-            transaction = session.beginTransaction();
-            User user = session.get(User.class, userId);
-            if (user != null) {
-                session.delete(user);
-            }
-            transaction.commit();
-        } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
-            log.error("Failed to delete user", e);
+    public void update(int id, User user) {
+        try (Session session = sessionFactory.getCurrentSession()) {
+            session.beginTransaction();
+            user.setId(id);
+            session.merge(user);
+            session.getTransaction().commit();
+        }
+    }
+    public void delete(int id) {
+        try (Session session = sessionFactory.getCurrentSession()) {
+            session.beginTransaction();
+            User user = session.get(User.class, id);
+            session.delete(user);
+            session.getTransaction().commit();
         }
     }
 }
