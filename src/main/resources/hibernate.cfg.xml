@@ -19,6 +19,5 @@
         <mapping class="innowise.internship.onlineshop.entities.Cart"/>
         <mapping class="innowise.internship.onlineshop.entities.Order"/>
         <mapping class="innowise.internship.onlineshop.entities.OrderItem"/>
-
     </session-factory>
 </hibernate-configuration>

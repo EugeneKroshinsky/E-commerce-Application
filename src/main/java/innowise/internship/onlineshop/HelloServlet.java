@@ -3,6 +3,8 @@ package innowise.internship.onlineshop;
 import java.io.*;
 import java.util.List;
 
+import innowise.internship.onlineshop.dao.GenericDaoImpl;
+import innowise.internship.onlineshop.entities.Cart;
 import innowise.internship.onlineshop.entities.Product;
 import innowise.internship.onlineshop.entities.User;
 import innowise.internship.onlineshop.services.ProductService;
@@ -22,7 +24,6 @@ public class HelloServlet extends HttpServlet {
         response.setContentType("text/html");
         UserService userService = new UserService();
         List<User> users = userService.getAll();
-
         PrintWriter out = response.getWriter();
         out.println("<html><body>");
         for (User user : users) {

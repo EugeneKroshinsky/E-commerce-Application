@@ -7,47 +7,60 @@ import org.hibernate.SessionFactory;
 
 import java.util.List;
 
-public class ProductDao {
-    private final static SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+public class GenericDaoImpl <T> implements GenericDao<T> {
+    private final SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+    private Class<T> type;
 
-    public void saveProduct(Product product) {
+    public GenericDaoImpl(Class<T> type) {
+        this.type = type;
+    }
+
+    @Override
+    public void save(T object) {
         try (Session session = sessionFactory.getCurrentSession()) {
             session.beginTransaction();
-            session.save(product);
+            session.save(object);
             session.getTransaction().commit();
         }
     }
-    public List<Product> getAll() {
+
+    @Override
+    public List<T> getAll() {
         try (Session session = sessionFactory.getCurrentSession()) {
             session.beginTransaction();
-            List<Product> products = session
-                    .createQuery("select p from Product p", Product.class)
+            List<T> objects = session
+                    .createQuery("select o from " + type.getSimpleName() + " o", type)
                     .getResultList();
             session.getTransaction().commit();
-            return products;
+            return objects;
         }
     }
-    public Product getById(int id) {
+
+    @Override
+    public T getById(int id) {
         try (Session session = sessionFactory.getCurrentSession()) {
             session.beginTransaction();
-            Product product = session.get(Product.class, id);
+            T object = session.get(type, id);
             session.getTransaction().commit();
-            return product;
+            return object;
         }
     }
-    public void update(int id, Product product) {
+
+    @Override
+    public void update(T object) {
         try (Session session = sessionFactory.getCurrentSession()) {
             session.beginTransaction();
-            product.setId(id);
-            session.merge(product);
+            session.merge(object);
             session.getTransaction().commit();
         }
     }
+
+    @Override
     public void delete(int id) {
         try (Session session = sessionFactory.getCurrentSession()) {
             session.beginTransaction();
-            Product product = session.get(Product.class, id);
-            session.delete(product);
+            T object = session.get(type, id);
+            session.delete(object);
             session.getTransaction().commit();
         }
     }
