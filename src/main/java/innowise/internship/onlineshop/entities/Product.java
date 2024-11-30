@@ -17,7 +17,7 @@ public class Product {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private int id;
 
     @Column(nullable = false, length = 100)
     private String name;
@@ -29,7 +29,7 @@ public class Product {
     private Double price;
 
     @Column(nullable = false)
-    private Integer quantity;
+    private int quantity;
 
     @Column(length = 50)
     private String category;
@@ -44,4 +44,6 @@ public class Product {
     private void onCreate() {
         this.createdAt = LocalDateTime.now();
     }
+
+
 }

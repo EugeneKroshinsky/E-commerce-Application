@@ -13,7 +13,7 @@ public class Cart {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private int id;
 
     @OneToOne
     @JoinColumn(name = "user_id", nullable = false)
@@ -24,6 +24,6 @@ public class Cart {
     private Product product;
 
     @Column(nullable = false)
-    private Integer quantity;
+    private int quantity;
 }
 

@@ -13,7 +13,7 @@ public class OrderItem {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private int id;
 
     @ManyToOne
     @JoinColumn(name = "order_id", nullable = false)
@@ -24,7 +24,7 @@ public class OrderItem {
     private Product product;
 
     @Column(nullable = false)
-    private Integer quantity;
+    private int quantity;
 
     @Column(nullable = false)
     private Double price;
