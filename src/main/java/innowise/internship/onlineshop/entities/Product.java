@@ -31,9 +31,6 @@ public class Product {
     @Column(nullable = false)
     private int quantity;
 
-    @Column(length = 50)
-    private String category;
-
     @Column(name = "image_url")
     private String imageUrl;
 
@@ -45,5 +42,7 @@ public class Product {
         this.createdAt = LocalDateTime.now();
     }
 
-
+    @ManyToOne
+    @JoinColumn(name = "category_id", nullable = false)
+    private Category category;
 }

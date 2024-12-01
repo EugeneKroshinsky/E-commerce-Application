@@ -14,24 +14,31 @@
 
     <form action="/products" method="get">
             <p>Filters:</p>
-
             <label for="category">Category:</label>
             <select id="category" name="category">
                 <option value="">All</option>
                 <c:forEach var="category" items="${categories}">
-                    <option value="${category}"
-                            <c:if test="${param.category == category}">selected</c:if>>
-                            ${category}
+                    <option value="${category.name}"
+                            <c:if test="${param.category.name == category.name}">selected</c:if>>
+                            ${category.name}
                     </option>
                 </c:forEach>
             </select>
             <br>
             <label for="minPrice">Min Price:</label>
-            <input type="number" id="minPrice" name="minPrice" value="${param.minPrice}" step="0.01">
+            <input type="number" id="minPrice" name="minPrice" value="${param.minPrice}" step="10" min="0">
             <br>
             <label for="maxPrice">Max Price:</label>
-            <input type="number" id="maxPrice" name="maxPrice" value="${param.maxPrice}" step="0.01">
+            <input type="number" id="maxPrice" name="maxPrice" value="${param.maxPrice}" step="10" min="0">
             <br>
+        <label for="sort">Sort by:</label>
+        <select id="sort" name="sort">
+            <option value="">Default</option>
+            <option value="date" <c:if test="${param.sort == 'date'}">selected</c:if>>Date</option>
+            <option value="price" <c:if test="${param.sort == 'price'}">selected</c:if>>Price</option>
+            <option value="name" <c:if test="${param.sort == 'name'}">selected</c:if>>Name</option>
+        </select>
+        <br>
             <button type="submit">Apply Filters</button>
     </form>
 
@@ -39,12 +46,12 @@
     <h1>Products</h1>
     <c:forEach var="product" items="${products}">
         <hr>
-        <b>Id: ${product.id}</b> <br>
-        <b>Name: ${product.name}</b>
+        <a href="${pageContext.request.contextPath}/product/${product.id}">Name: ${product.name}</a>
         <p>Description: ${product.description}</p>
         <p>Price: ${product.price}</p>
         <p>Quantity: ${product.quantity}</p>
-        <p>Category: ${product.category}</p>
+        <p>Category: ${product.category.name}</p>
     </c:forEach>
+
 </body>
 </html>
