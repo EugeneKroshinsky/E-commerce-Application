@@ -6,12 +6,14 @@
     <title>Main Page</title>
 </head>
 <body>
+    <a href="${pageContext.request.contextPath}/cart">Cart</a>
+    <hr>
     <form action="/products" method="get">
         <label for="search">Search:</label>
         <input type="text" id="search" name="search" value="${param.search}" placeholder="Enter product name">
         <button type="submit">Search</button>
     </form>
-
+    <hr>
     <form action="/products" method="get">
             <p>Filters:</p>
             <label for="category">Category:</label>
@@ -44,6 +46,9 @@
 
     <hr>
     <h1>Products</h1>
+    <c:if test="${products.isEmpty()}">
+        <p>No products</p>
+    </c:if>
     <c:forEach var="product" items="${products}">
         <hr>
         <a href="${pageContext.request.contextPath}/product/${product.id}">Name: ${product.name}</a>
@@ -51,6 +56,13 @@
         <p>Price: ${product.price}</p>
         <p>Quantity: ${product.quantity}</p>
         <p>Category: ${product.category.name}</p>
+        <form action="${pageContext.request.contextPath}/cart" method="POST">
+            <input type="hidden" name="action" value="add">
+            <input type="hidden" name="productId" value="${product.id}">
+            <label>Quantity:</label>
+            <input type="number" name="quantity" min="1" value="1">
+            <button type="submit">Add to Cart</button>
+        </form>
     </c:forEach>
 
 </body>
