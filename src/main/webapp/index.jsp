@@ -52,5 +52,6 @@
         <p>Quantity: ${product.quantity}</p>
         <p>Category: ${product.category.name}</p>
     </c:forEach>
+
 </body>
 </html>
