@@ -14,7 +14,6 @@
 
     <form action="/products" method="get">
             <p>Filters:</p>
-
             <label for="category">Category:</label>
             <select id="category" name="category">
                 <option value="">All</option>
@@ -32,6 +31,14 @@
             <label for="maxPrice">Max Price:</label>
             <input type="number" id="maxPrice" name="maxPrice" value="${param.maxPrice}" step="10" min="0">
             <br>
+        <label for="sort">Sort by:</label>
+        <select id="sort" name="sort">
+            <option value="">Default</option>
+            <option value="date" <c:if test="${param.sort == 'date'}">selected</c:if>>Date</option>
+            <option value="price" <c:if test="${param.sort == 'price'}">selected</c:if>>Price</option>
+            <option value="name" <c:if test="${param.sort == 'name'}">selected</c:if>>Name</option>
+        </select>
+        <br>
             <button type="submit">Apply Filters</button>
     </form>
 
