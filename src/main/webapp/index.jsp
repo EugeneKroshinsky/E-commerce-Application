@@ -39,8 +39,7 @@
     <h1>Products</h1>
     <c:forEach var="product" items="${products}">
         <hr>
-        <b>Id: ${product.id}</b> <br>
-        <b>Name: ${product.name}</b>
+        <a href="${pageContext.request.contextPath}/product/${product.id}">Name: ${product.name}</a>
         <p>Description: ${product.description}</p>
         <p>Price: ${product.price}</p>
         <p>Quantity: ${product.quantity}</p>
