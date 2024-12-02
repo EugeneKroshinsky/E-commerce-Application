@@ -26,8 +26,21 @@ public class OrderServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
-        Order order = new Order();
+        Order order = createOrder(request, session);
+        try {
+            orderService.save(order);
+        } catch (Exception e) {
+            getServletContext().getRequestDispatcher("/order_error.jsp").forward(request, response);
+            return;
+        }
+        session.removeAttribute("cart");
+        request.setAttribute("order", order);
+        getServletContext().getRequestDispatcher("/order_success.jsp").forward(request, response);
+    }
+
+    private Order createOrder(HttpServletRequest request, HttpSession session) {
         List<OrderItem> cart = (List<OrderItem>) session.getAttribute("cart");
+        Order order = new Order();
         order.setItems(cart);
         order.setUser(null);
         order.setAddress(request.getParameter("address"));
@@ -39,9 +52,6 @@ public class OrderServlet extends HttpServlet {
         order.setTotalPrice(cart.stream()
                 .map(ct -> ct.getProduct().getPrice() * ct.getQuantity())
                 .mapToDouble(el-> el).sum());
-        orderService.save(order);
-        session.removeAttribute("cart");
-        request.setAttribute("order", order);
-        getServletContext().getRequestDispatcher("/order_success.jsp").forward(request, response);
+        return order;
     }
 }
