@@ -2,7 +2,6 @@ package innowise.internship.onlineshop.servlets;
 
 import innowise.internship.onlineshop.entities.*;
 import innowise.internship.onlineshop.services.OrderService;
-import innowise.internship.onlineshop.services.UserService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -37,6 +36,8 @@ public class OrderServlet extends HttpServlet {
         request.setAttribute("order", order);
         getServletContext().getRequestDispatcher("/order_success.jsp").forward(request, response);
     }
+
+    //TODO: Реализовать логику удаления заказанных товраов из базы данных
 
     private Order createOrder(HttpServletRequest request, HttpSession session) {
         List<OrderItem> cart = (List<OrderItem>) session.getAttribute("cart");
