@@ -21,8 +21,22 @@ public class Order {
     private int id;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "user_id")
     private User user;
+
+
+    @Column(name = "first_name", nullable = false)
+    private String firstName;
+
+    @Column(name = "last_name", nullable = false)
+    private String lastName;
+
+    @Column(name = "phone", nullable = false)
+    private String phone;
+
+    @Column(name = "email", nullable = false)
+    private String email;
+
 
     @Column(name = "total_price", nullable = false)
     private Double totalPrice;
@@ -34,7 +48,7 @@ public class Order {
     private String comment;
 
     @Column(length = 50)
-    private String status = "в обработке";
+    private String status = "In process";
 
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;

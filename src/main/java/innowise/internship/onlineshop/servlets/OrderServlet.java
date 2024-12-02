@@ -1,9 +1,6 @@
 package innowise.internship.onlineshop.servlets;
 
-import innowise.internship.onlineshop.entities.Order;
-import innowise.internship.onlineshop.entities.Role;
-import innowise.internship.onlineshop.entities.RoleEntity;
-import innowise.internship.onlineshop.entities.User;
+import innowise.internship.onlineshop.entities.*;
 import innowise.internship.onlineshop.services.OrderService;
 import innowise.internship.onlineshop.services.UserService;
 import jakarta.servlet.ServletException;
@@ -11,13 +8,13 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
-import java.util.Set;
+import java.util.List;
 
 @WebServlet(value = "/order")
 public class OrderServlet extends HttpServlet {
-    private final UserService userService = new UserService();
     private final OrderService orderService = new OrderService();
 
     @Override
@@ -28,15 +25,23 @@ public class OrderServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        User user = new User();
-        user.setFirstName(request.getParameter("firstName"));
-        user.setLastName(request.getParameter("lastName"));
-        user.setPhone(request.getParameter("phone"));
-        user.setEmail(request.getParameter("email"));
-        RoleEntity roleEntity = new RoleEntity();
-        roleEntity.setRole(Role.GUEST);
-        user.setRoles(Set.of(roleEntity));
-        userService.save(user);
+        HttpSession session = request.getSession();
         Order order = new Order();
+        List<OrderItem> cart = (List<OrderItem>) session.getAttribute("cart");
+        order.setItems(cart);
+        order.setUser(null);
+        order.setAddress(request.getParameter("address"));
+        order.setComment(request.getParameter("comment"));
+        order.setFirstName(request.getParameter("firstName"));
+        order.setLastName(request.getParameter("lastName"));
+        order.setEmail(request.getParameter("email"));
+        order.setPhone(request.getParameter("phone"));
+        order.setTotalPrice(cart.stream()
+                .map(ct -> ct.getProduct().getPrice() * ct.getQuantity())
+                .mapToDouble(el-> el).sum());
+        orderService.save(order);
+        session.removeAttribute("cart");
+        request.setAttribute("order", order);
+        getServletContext().getRequestDispatcher("/order_success.jsp").forward(request, response);
     }
 }

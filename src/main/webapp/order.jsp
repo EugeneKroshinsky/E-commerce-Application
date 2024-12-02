@@ -4,7 +4,7 @@
     <title>Title</title>
 </head>
 <body>
-<form action="/order" method="post">
+<form action="${pageContext.request.contextPath}/order" method="post">
     <label for="firstName">First Name</label>
     <input type="text" id="firstName" name="firstName" required>
     <br>

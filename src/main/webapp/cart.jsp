@@ -26,9 +26,8 @@
     </c:forEach>
 
     <p><b>Total: </b>${cart.stream().map(ct -> ct.product.price * ct    .quantity).sum()}</p>
-    <form action="/cart" method="post">
-        <button type="submit">Order</button>
-    </form>
+    <a href="${pageContext.request.contextPath}/order">Order</a>
+    <br>
     <a href="${pageContext.request.contextPath}/mainPage">Back</a>
 </body>
 </html>
