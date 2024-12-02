@@ -6,8 +6,7 @@
     <title>Main Page</title>
 </head>
 <body>
-    <a href="${pageContext.request.contextPath}/cart">Cart</a>
-    <hr>
+    <jsp:include page="header.jsp" />
     <form action="/products" method="get">
         <label for="search">Search:</label>
         <input type="text" id="search" name="search" value="${param.search}" placeholder="Enter product name">
@@ -65,5 +64,6 @@
         </form>
     </c:forEach>
 
+    <jsp:include page="footer.html" />
 </body>
 </html>

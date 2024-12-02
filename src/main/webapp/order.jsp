@@ -5,6 +5,7 @@
     <title>Title</title>
 </head>
     <body>
+        <jsp:include page="header.jsp" />
         <c:if test="${cart.isEmpty()}">
             <p>Cart is empty</p>
         </c:if>
@@ -31,5 +32,6 @@
                 <button type="submit">Place Order</button>
             </form>
         </c:if>
+        <jsp:include page="footer.html" />
     </body>
 </html>

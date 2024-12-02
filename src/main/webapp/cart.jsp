@@ -5,6 +5,7 @@
     <title>Title</title>
 </head>
 <body>
+    <jsp:include page="header.jsp" />
     <h1>Cart</h1>
     <c:if test="${cart.isEmpty()}">
         <p>Cart is empty</p>
@@ -29,5 +30,6 @@
     <a href="${pageContext.request.contextPath}/order">Order</a>
     <br>
     <a href="${pageContext.request.contextPath}/mainPage">Back</a>
+    <jsp:include page="footer.html" />
 </body>
 </html>

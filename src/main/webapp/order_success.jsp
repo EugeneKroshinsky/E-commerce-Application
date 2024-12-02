@@ -5,6 +5,7 @@
     <title>Order Success</title>
 </head>
 <body>
+<jsp:include page="header.jsp" />
 <h1>Order Successfully Placed!</h1>
 <h2>Person information:</h2>
 <p><b>Order ID:</b> ${order.id}</p>
@@ -27,5 +28,6 @@
 
 <p><b>Total Price:</b> ${order.items.stream().map(item -> item.product.price * item.quantity).sum()}</p>
 <a href="${pageContext.request.contextPath}/mainPage">Return to Product List</a>
+<jsp:include page="footer.html" />
 </body>
 </html>
