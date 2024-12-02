@@ -11,8 +11,16 @@
     <p><b>Description:</b> ${product.description}</p>
     <p><b>Price:</b> ${product.price}</p>
     <p><b>Quantity:</b> ${product.quantity}</p>
-    <p><b>Category:</b> ${product.category}</p>
+    <p><b>Category:</b> ${product.category.name}</p>
     <p><b>Image:</b> <img src="${product.imageUrl}" alt="${product.name}" /></p>
     <a href="javascript:history.back()">Back to Product List</a>
+
+    <form action="${pageContext.request.contextPath}/cart" method="POST">
+        <input type="hidden" name="action" value="add">
+        <input type="hidden" name="productId" value="${product.id}">
+        <label>Quantity:</label>
+        <input type="number" name="quantity" min="1" value="1">
+        <button type="submit">Add to Cart</button>
+    </form>
 </body>
 </html>

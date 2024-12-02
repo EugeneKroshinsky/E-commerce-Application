@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "products")
@@ -36,13 +37,15 @@ public class Product {
 
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
-
+    @ManyToOne
+    @JoinColumn(name = "category_id", nullable = false)
+    private Category category;
+    @ManyToMany(mappedBy = "products")
+    private List<Cart> carts;
     @PrePersist
     private void onCreate() {
         this.createdAt = LocalDateTime.now();
     }
 
-    @ManyToOne
-    @JoinColumn(name = "category_id", nullable = false)
-    private Category category;
+
 }
