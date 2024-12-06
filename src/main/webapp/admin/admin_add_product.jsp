@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <html>
 <head>
     <title>Create New Product</title>
@@ -7,7 +8,7 @@
 <a href="javascript:history.back()">Back</a>
 <h1>Create New Product</h1>
 
-<form action="${pageContext.request.contextPath}/admin/product/create" method="post" enctype="multipart/form-data">
+<form action="${pageContext.request.contextPath}/admin/add/product" method="post" >
     <label for="name">Product Name:</label>
     <input type="text" id="name" name="name" required>
     <br><br>
@@ -23,6 +24,7 @@
     <label for="quantity">Quantity:</label>
     <input type="number" id="quantity" name="quantity" min="0" required>
     <br><br>
+
     <label for="category">Category:</label>
     <select id="category" name="categoryId">
         <option value="">-- Select a Category --</option>
@@ -32,9 +34,7 @@
     </select>
     <br><br>
 
-    <label for="image">Product Image:</label>
-    <input type="file" id="image" name="image" accept="image/*">
-    <br><br>
+
 
     <button type="submit">Create Product</button>
 </form>
