@@ -1,4 +1,4 @@
-package innowise.internship.onlineshop.servlets;
+package innowise.internship.onlineshop.servlets.admin;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -12,6 +12,6 @@ import java.io.IOException;
 public class AdminServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("/admin.jsp").forward(request, response);
+        request.getRequestDispatcher("/admin/admin.jsp").forward(request, response);
     }
 }

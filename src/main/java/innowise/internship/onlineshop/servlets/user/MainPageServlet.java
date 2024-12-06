@@ -1,4 +1,4 @@
-package innowise.internship.onlineshop.servlets;
+package innowise.internship.onlineshop.servlets.user;
 
 import java.io.*;
 import java.util.List;
@@ -22,6 +22,6 @@ public class MainPageServlet extends HttpServlet {
         List<Category> categories = categoryService.getAll();
         request.setAttribute("products", products);
         request.setAttribute("categories", categories);
-        getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/user/index.jsp").forward(request, response);
     }
 }

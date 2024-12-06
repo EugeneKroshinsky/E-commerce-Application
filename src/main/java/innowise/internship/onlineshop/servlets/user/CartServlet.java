@@ -1,4 +1,4 @@
-package innowise.internship.onlineshop.servlets;
+package innowise.internship.onlineshop.servlets.user;
 
 import innowise.internship.onlineshop.entities.OrderItem;
 import innowise.internship.onlineshop.entities.Product;
@@ -23,7 +23,7 @@ public class CartServlet extends HttpServlet {
         HttpSession session = request.getSession();
         List<OrderItem> cart = getCart(session);
         request.setAttribute("cart", cart);
-        request.getRequestDispatcher("/cart.jsp").forward(request, response);
+        request.getRequestDispatcher("/user/cart.jsp").forward(request, response);
     }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

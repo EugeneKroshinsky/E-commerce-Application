@@ -1,4 +1,4 @@
-package innowise.internship.onlineshop.servlets;
+package innowise.internship.onlineshop.servlets.admin;
 
 import innowise.internship.onlineshop.services.ProductService;
 import jakarta.servlet.ServletException;
@@ -15,7 +15,7 @@ public class AdminProductServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setAttribute("products", productService.getAll());
-        request.getRequestDispatcher("/admin_product.jsp").forward(request, response);
+        request.getRequestDispatcher("/admin/admin_product.jsp").forward(request, response);
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

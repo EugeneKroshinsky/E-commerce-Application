@@ -1,4 +1,4 @@
-package innowise.internship.onlineshop.servlets;
+package innowise.internship.onlineshop.servlets.user;
 
 import innowise.internship.onlineshop.entities.*;
 import innowise.internship.onlineshop.services.OrderService;
@@ -19,7 +19,7 @@ public class OrderServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        getServletContext().getRequestDispatcher("/order.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/user/order.jsp").forward(request, response);
     }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -29,12 +29,12 @@ public class OrderServlet extends HttpServlet {
         try {
             orderService.save(order);
         } catch (Exception e) {
-            getServletContext().getRequestDispatcher("/order_error.jsp").forward(request, response);
+            getServletContext().getRequestDispatcher("/user/order_error.jsp").forward(request, response);
             return;
         }
         session.removeAttribute("cart");
         request.setAttribute("order", order);
-        getServletContext().getRequestDispatcher("/order_success.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/user/order_success.jsp").forward(request, response);
     }
 
     //TODO: Реализовать логику удаления заказанных товраов из базы данных

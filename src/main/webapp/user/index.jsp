@@ -7,13 +7,13 @@
 </head>
 <body>
     <jsp:include page="header.jsp" />
-    <form action="/products" method="get">
+    <form action="/search" method="get">
         <label for="search">Search:</label>
         <input type="text" id="search" name="search" value="${param.search}" placeholder="Enter product name">
         <button type="submit">Search</button>
     </form>
     <hr>
-    <form action="/products" method="get">
+    <form action="/filter" method="get">
             <p>Filters:</p>
             <label for="category">Category:</label>
             <select id="category" name="category">

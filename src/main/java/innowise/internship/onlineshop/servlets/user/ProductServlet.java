@@ -1,4 +1,4 @@
-package innowise.internship.onlineshop.servlets;
+package innowise.internship.onlineshop.servlets.user;
 
 import innowise.internship.onlineshop.services.ProductService;
 import jakarta.servlet.ServletException;
@@ -24,7 +24,7 @@ public class ProductServlet extends HttpServlet {
         try {
             int id = Integer.parseInt(request.getPathInfo().substring(1));
             request.setAttribute("product", productService.getById(id));
-            getServletContext().getRequestDispatcher("/product.jsp").forward(request, response);
+            getServletContext().getRequestDispatcher("/user/product.jsp").forward(request, response);
         } catch (NumberFormatException e) {
             log.error("Invalid product ID: {}", pathInfo);
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid product ID");
