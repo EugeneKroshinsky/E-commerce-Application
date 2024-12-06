@@ -1,5 +1,6 @@
 package innowise.internship.onlineshop.servlets;
 
+import innowise.internship.onlineshop.services.CategoryService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -8,10 +9,12 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(value = "/admin/products")
-public class AdminProductsServlet extends HttpServlet {
+@WebServlet(value = "/admin/add/product")
+public class ProductCreateServlet extends HttpServlet {
+    private final CategoryService categoryService = new CategoryService();
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("/admin_products.jsp").forward(request, response);
+        request.setAttribute("categories", categoryService.getAll());
+        request.getRequestDispatcher("/admin_add_product.jsp").forward(request, response);
     }
 }

@@ -1,17 +1,16 @@
-package innowise.internship.onlineshop.dao;
+package innowise.internship.onlineshop.repository;
 
-import innowise.internship.onlineshop.entities.Product;
 import innowise.internship.onlineshop.utils.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import java.util.List;
 
-public class GenericDaoImpl <T> implements GenericDao<T> {
+public class GenericRepositoryImpl<T> implements GenericRepository<T> {
     private final SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
     private Class<T> type;
 
-    public GenericDaoImpl(Class<T> type) {
+    public GenericRepositoryImpl(Class<T> type) {
         this.type = type;
     }
 

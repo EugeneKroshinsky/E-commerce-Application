@@ -1,8 +1,8 @@
-package innowise.internship.onlineshop.dao;
+package innowise.internship.onlineshop.repository;
 
 import java.util.List;
 
-public interface GenericDao<T>{
+public interface GenericRepository<T>{
     void save(T object);
     List<T> getAll();
     T getById(int id);

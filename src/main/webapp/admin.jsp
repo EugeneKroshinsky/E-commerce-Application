@@ -8,8 +8,8 @@
 <body>
 <h1>Admin Panel</h1>
 <ul>
-    <li><a href="/admin/orders">Manage Orders</a></li>
-    <li><a href="/admin/products">Manage Products</a></li>
+    <li><a href="${pageContext.request.contextPath}/admin/orders">Manage Orders</a></li>
+    <li><a href="${pageContext.request.contextPath}/admin/product">Manage Products</a></li>
 </ul>
 </body>
 </html>

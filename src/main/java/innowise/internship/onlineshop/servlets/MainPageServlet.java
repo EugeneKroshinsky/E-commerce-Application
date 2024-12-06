@@ -20,7 +20,6 @@ public class MainPageServlet extends HttpServlet {
             throws ServletException, IOException {
         List<Product> products = productService.getAll();
         List<Category> categories = categoryService.getAll();
-        response.getWriter().println("Categories: " + categories.size());
         request.setAttribute("products", products);
         request.setAttribute("categories", categories);
         getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);

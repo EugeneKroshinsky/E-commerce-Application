@@ -12,6 +12,6 @@ import java.io.IOException;
 public class AdminServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("/admin_page.html").forward(request, response);
+        request.getRequestDispatcher("/admin.jsp").forward(request, response);
     }
 }

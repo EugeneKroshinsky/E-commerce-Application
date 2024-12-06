@@ -1,6 +1,6 @@
 package innowise.internship.onlineshop.services;
 
-import innowise.internship.onlineshop.dao.GenericDaoImpl;
+import innowise.internship.onlineshop.repository.GenericRepositoryImpl;
 import innowise.internship.onlineshop.entities.Category;
 import lombok.extern.slf4j.Slf4j;
 
@@ -8,10 +8,10 @@ import java.util.List;
 
 @Slf4j
 public class CategoryService {
-    private final GenericDaoImpl<Category> categoryDao;
+    private final GenericRepositoryImpl<Category> categoryDao;
 
     public CategoryService() {
-        this.categoryDao = new GenericDaoImpl<>(Category.class);
+        this.categoryDao = new GenericRepositoryImpl<>(Category.class);
     }
 
     public List<Category> getAll() {

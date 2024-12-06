@@ -29,6 +29,5 @@ public class ProductServlet extends HttpServlet {
             log.error("Invalid product ID: {}", pathInfo);
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid product ID");
         }
-
     }
 }
