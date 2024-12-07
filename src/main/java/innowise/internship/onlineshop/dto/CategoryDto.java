@@ -8,9 +8,7 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class OrderItem {
+public class CategoryDto {
     private int id;
-    private int orderId;
-    private int productId;
-    private int quantity;
+    private String name;
 }

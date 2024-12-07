@@ -1,13 +1,11 @@
 package innowise.internship.onlineshop.services;
 
-import innowise.internship.onlineshop.dto.Order;
-
 import java.util.List;
 
 public interface OrderService {
-    void save(Order order);
-    List<Order> getAll();
-    Order getById(int id);
-    void update(Order Order);
+    void save(Object order);
+    List<Object> getAll();
+    Object getById(int id);
+    void update(Object order);
     void delete(int id);
 }

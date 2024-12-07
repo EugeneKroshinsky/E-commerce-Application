@@ -1,6 +1,5 @@
 package innowise.internship.onlineshop.services;
 
-import innowise.internship.onlineshop.dto.Order;
 import innowise.internship.onlineshop.entities.OrderEntity;
 import innowise.internship.onlineshop.repository.GenericRepositoryImpl;
 
@@ -14,22 +13,22 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void save(Order order) {
+    public void save(Object order) {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public List<Order> getAll() {
+    public List<Object> getAll() {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public Order getById(int id) {
+    public Object getById(int id) {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public void update(Order Order) {
+    public void update(Object Order) {
         throw new UnsupportedOperationException();
     }
 
