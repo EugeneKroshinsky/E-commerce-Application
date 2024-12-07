@@ -1,27 +1,29 @@
 package innowise.internship.onlineshop.servlets.user;
 
 import java.io.*;
-import java.util.List;
 
-import innowise.internship.onlineshop.entities.CategoryEntity;
-import innowise.internship.onlineshop.entities.ProductEntity;
 import innowise.internship.onlineshop.services.CategoryService;
+import innowise.internship.onlineshop.services.CategoryServiceImpl;
 import innowise.internship.onlineshop.services.ProductService;
+import innowise.internship.onlineshop.services.ProductServiceImpl;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
 @WebServlet(value = "/mainPage")
 public class MainPageServlet extends HttpServlet {
-    private final ProductService productService = new ProductService();
-    private final CategoryService categoryService = new CategoryService();
+    private ProductService productService;
+    //private CategoryService categoryService;
+    @Override
+    public void init() throws ServletException {
+        this.productService = new ProductServiceImpl();
+        //this.categoryService = new CategoryServiceImpl();
+    }
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List<ProductEntity> productEntities = productService.getAll();
-        List<CategoryEntity> categories = categoryService.getAll();
-        request.setAttribute("products", productEntities);
-        request.setAttribute("categories", categories);
+        request.setAttribute("products", productService.getAll());
+        //request.setAttribute("categories", categoryService.getAll());
         getServletContext().getRequestDispatcher("/user/index.jsp").forward(request, response);
     }
 }

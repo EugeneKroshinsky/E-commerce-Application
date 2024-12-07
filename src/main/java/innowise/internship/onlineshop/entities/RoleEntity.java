@@ -5,7 +5,10 @@ import lombok.*;
 
 import java.util.HashSet;
 import java.util.Set;
-
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "roles")
 public class RoleEntity {

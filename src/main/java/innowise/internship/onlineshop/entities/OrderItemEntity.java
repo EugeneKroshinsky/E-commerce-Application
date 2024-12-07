@@ -2,7 +2,10 @@ package innowise.internship.onlineshop.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
-
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "order_items")
 public class OrderItemEntity {

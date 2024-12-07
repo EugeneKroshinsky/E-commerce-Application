@@ -45,19 +45,19 @@
 
     <hr>
     <h1>Products</h1>
-    <c:if test="${productEntities.isEmpty()}">
+    <c:if test="${products.isEmpty()}">
         <p>No productEntities</p>
     </c:if>
-    <c:forEach var="productEntity" items="${productEntities}">
+    <c:forEach var="product" items="${products}">
         <hr>
-        <a href="${pageContext.request.contextPath}/productEntity/${productEntity.id}">Name: ${productEntity.name}</a>
-        <p>Description: ${productEntity.description}</p>
-        <p>Price: ${productEntity.price}</p>
-        <p>Quantity: ${productEntity.quantity}</p>
-        <p>Category: ${productEntity.categoryEntity.name}</p>
+        <a href="${pageContext.request.contextPath}/productEntity/${product.id}">Name: ${product.name}</a>
+        <p>Description: ${product.description}</p>
+        <p>Price: ${product.price}</p>
+        <p>Quantity: ${product.quantity}</p>
+        <p>Category: ${product.category}</p>
         <form action="${pageContext.request.contextPath}/cart" method="POST">
             <input type="hidden" name="action" value="add">
-            <input type="hidden" name="productId" value="${productEntity.id}">
+            <input type="hidden" name="productId" value="${product.id}">
             <label>Quantity:</label>
             <input type="number" name="quantity" min="1" value="1">
             <button type="submit">Add to Cart</button>

@@ -1,6 +1,6 @@
 package innowise.internship.onlineshop.servlets.user;
 
-import innowise.internship.onlineshop.services.ProductService;
+import innowise.internship.onlineshop.services.ProductServiceImpl;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -13,7 +13,7 @@ import java.io.IOException;
 @Slf4j
 @WebServlet(value = "/product/*")
 public class ProductServlet extends HttpServlet {
-    private final ProductService productService = new ProductService();
+    private final ProductServiceImpl productServiceImpl = new ProductServiceImpl();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -23,7 +23,7 @@ public class ProductServlet extends HttpServlet {
         }
         try {
             int id = Integer.parseInt(request.getPathInfo().substring(1));
-            request.setAttribute("product", productService.getById(id));
+            request.setAttribute("product", productServiceImpl.getById(id));
             getServletContext().getRequestDispatcher("/user/product.jsp").forward(request, response);
         } catch (NumberFormatException e) {
             log.error("Invalid product ID: {}", pathInfo);

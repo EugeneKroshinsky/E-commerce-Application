@@ -2,7 +2,7 @@ package innowise.internship.onlineshop.servlets.user;
 
 import innowise.internship.onlineshop.entities.OrderItemEntity;
 import innowise.internship.onlineshop.entities.ProductEntity;
-import innowise.internship.onlineshop.services.ProductService;
+import innowise.internship.onlineshop.services.ProductServiceImpl;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -16,7 +16,7 @@ import java.util.List;
 
 @WebServlet(value = "/cart")
 public class CartServlet extends HttpServlet {
-    private final ProductService productService = new ProductService();
+    private final ProductServiceImpl productServiceImpl = new ProductServiceImpl();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -34,10 +34,10 @@ public class CartServlet extends HttpServlet {
         if ("add".equals(action)) {
             int productId = Integer.parseInt(productIdParam);
             int quantity = Integer.parseInt(quantityParam);
-            ProductEntity productEntity = productService.getById(productId);
+            //ProductEntity productEntity = productServiceImpl.getById(productId);
             OrderItemEntity orderItemEntity = new OrderItemEntity();
             orderItemEntity.setQuantity(quantity);
-            orderItemEntity.setProductEntity(productEntity);
+            //orderItemEntity.setProductEntity(productEntity);
             addToCart(session, orderItemEntity);
         } else if ("delete".equals(action)) {
             int productId = Integer.parseInt(productIdParam);

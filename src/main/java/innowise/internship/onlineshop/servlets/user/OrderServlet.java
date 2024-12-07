@@ -1,7 +1,7 @@
 package innowise.internship.onlineshop.servlets.user;
 
 import innowise.internship.onlineshop.entities.*;
-import innowise.internship.onlineshop.services.OrderService;
+import innowise.internship.onlineshop.services.OrderServiceImpl;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -16,7 +16,7 @@ import java.util.List;
 @Slf4j
 @WebServlet(value = "/order")
 public class OrderServlet extends HttpServlet {
-    private final OrderService orderService = new OrderService();
+    private final OrderServiceImpl orderServiceImpl = new OrderServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -29,7 +29,7 @@ public class OrderServlet extends HttpServlet {
         HttpSession session = request.getSession();
         OrderEntity orderEntity = createOrder(request, session);
         try {
-            orderService.save(orderEntity);
+            //orderServiceImpl.save(orderEntity);
         } catch (Exception e) {
             log.error("Failed to save order", e);
             getServletContext().getRequestDispatcher("/user/order_error.jsp").forward(request, response);

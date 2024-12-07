@@ -5,7 +5,10 @@ import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
-
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "orders")
 public class OrderEntity {
@@ -17,7 +20,6 @@ public class OrderEntity {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private UserEntity userEntity;
-
 
     @Column(name = "first_name", nullable = false)
     private String firstName;
@@ -47,7 +49,7 @@ public class OrderEntity {
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "orderEntity", cascade = CascadeType.ALL)
     private List<OrderItemEntity> items;
 
     @PrePersist

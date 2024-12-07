@@ -1,6 +1,6 @@
 package innowise.internship.onlineshop.servlets.admin.product;
 
-import innowise.internship.onlineshop.services.ProductService;
+import innowise.internship.onlineshop.services.ProductServiceImpl;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -11,10 +11,10 @@ import java.io.IOException;
 
 @WebServlet(value = "/admin/product")
 public class AdminProductServlet extends HttpServlet {
-    private final ProductService productService = new ProductService();
+    private final ProductServiceImpl productServiceImpl = new ProductServiceImpl();
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.setAttribute("products", productService.getAll());
+        request.setAttribute("products", productServiceImpl.getAll());
         request.getRequestDispatcher("/admin/admin_product.jsp").forward(request, response);
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -23,7 +23,7 @@ public class AdminProductServlet extends HttpServlet {
         String id = request.getParameter("id");
         if ("delete".equals(action)) {
             int productId = Integer.parseInt(id);
-            productService.delete(productId);
+            productServiceImpl.delete(productId);
         }
         response.sendRedirect(request.getContextPath() + "/admin/product");
     }
