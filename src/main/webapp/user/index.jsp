@@ -50,7 +50,7 @@
     </c:if>
     <c:forEach var="product" items="${products}">
         <hr>
-        <a href="${pageContext.request.contextPath}/productEntity/${product.id}">Name: ${product.name}</a>
+        <a href="${pageContext.request.contextPath}/product/${product.id}">Name: ${product.name}</a>
         <p>Description: ${product.description}</p>
         <p>Price: ${product.price}</p>
         <p>Quantity: ${product.quantity}</p>
