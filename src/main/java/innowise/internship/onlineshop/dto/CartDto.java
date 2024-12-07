@@ -10,5 +10,5 @@ import lombok.*;
 @NoArgsConstructor
 public class CartDto {
     private int quantity;
-    private ProductMainPageDto product;
+    private ProductDto product;
 }

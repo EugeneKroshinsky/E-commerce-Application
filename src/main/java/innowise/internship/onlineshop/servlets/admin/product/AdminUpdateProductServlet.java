@@ -1,5 +1,7 @@
 package innowise.internship.onlineshop.servlets.admin.product;
 
+import innowise.internship.onlineshop.dto.ProductDto;
+import innowise.internship.onlineshop.mapper.ProductMapper;
 import innowise.internship.onlineshop.model.ProductEntity;
 import innowise.internship.onlineshop.services.CategoryServiceImpl;
 import innowise.internship.onlineshop.services.ProductServiceImpl;
@@ -19,19 +21,10 @@ public class AdminUpdateProductServlet extends HttpServlet {
     private final ProductServiceImpl productServiceImpl = new ProductServiceImpl();
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String pathInfo = request.getPathInfo();
-        if (pathInfo != null && pathInfo.startsWith("/")) {
-            pathInfo = pathInfo.substring(1);
-        }
-        try {
-            int id = Integer.parseInt(request.getPathInfo().substring(1));
-            request.setAttribute("product", productServiceImpl.getById(id));
-            request.setAttribute("categories", categoryServiceImpl.getAll());
-            getServletContext().getRequestDispatcher("/admin/admin_update_product.jsp").forward(request, response);
-        } catch (NumberFormatException e) {
-            log.error("Invalid product ID: {}", pathInfo);
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid product ID");
-        }
+        ProductDto productDto = ProductMapper.toDto(request);
+        request.setAttribute("product", productServiceImpl.getById(productDto.getId()));
+        request.setAttribute("categories", categoryServiceImpl.getAll());
+        getServletContext().getRequestDispatcher("/admin/admin_update_product.jsp").forward(request, response);
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

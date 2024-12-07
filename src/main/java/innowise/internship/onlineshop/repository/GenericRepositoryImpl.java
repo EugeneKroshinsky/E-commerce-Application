@@ -36,7 +36,7 @@ public class GenericRepositoryImpl <T> implements GenericRepository<T> {
     }
 
     @Override
-    public T getById(int id) {
+    public T getById(Long id) {
         try (Session session = sessionFactory.getCurrentSession()) {
             session.beginTransaction();
             T object = session.get(type, id);
@@ -55,7 +55,7 @@ public class GenericRepositoryImpl <T> implements GenericRepository<T> {
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(Long id) {
         try (Session session = sessionFactory.getCurrentSession()) {
             session.beginTransaction();
             T object = session.get(type, id);

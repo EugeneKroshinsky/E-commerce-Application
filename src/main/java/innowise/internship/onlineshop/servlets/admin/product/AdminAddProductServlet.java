@@ -28,12 +28,12 @@ public class AdminAddProductServlet extends HttpServlet {
         productEntity.setName(request.getParameter("name"));
         productEntity.setDescription(request.getParameter("description"));
         productEntity.setPrice(Double.parseDouble(request.getParameter("price")));
-        //productEntity.setCategoryEntity(categoryServiceImpl.getById(Integer.parseInt(request.getParameter("categoryId"))));
+        productEntity.setCategoryEntity(categoryServiceImpl.getById(Integer.parseInt(request.getParameter("categoryId"))));
         productEntity.setQuantity(Integer.parseInt(request.getParameter("quantity")));
         //TODO: реализовать добавление картинок
         productEntity.setImageUrl("https://via.placeholder.com/150");
         log.info("Product: {}", productEntity);
-        //productServiceImpl.save(productEntity);
+        productServiceImpl.save(productEntity);
         response.sendRedirect(request.getContextPath() + "/admin/product");
     }
 }

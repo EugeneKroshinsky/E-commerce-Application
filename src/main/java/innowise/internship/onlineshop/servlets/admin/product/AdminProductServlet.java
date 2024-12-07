@@ -20,9 +20,8 @@ public class AdminProductServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String action = request.getParameter("action");
-        String id = request.getParameter("id");
         if ("delete".equals(action)) {
-            int productId = Integer.parseInt(id);
+            Long productId = Long.parseLong(request.getParameter("id"));
             productServiceImpl.delete(productId);
         }
         response.sendRedirect(request.getContextPath() + "/admin/product");

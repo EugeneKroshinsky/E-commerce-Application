@@ -1,13 +1,13 @@
 package innowise.internship.onlineshop.services;
 
-import innowise.internship.onlineshop.dto.ProductMainPageDto;
+import innowise.internship.onlineshop.dto.ProductDto;
 
 import java.util.List;
 
 public interface ProductService {
-    void save(ProductMainPageDto productMainPageDto);
-    List<ProductMainPageDto> getAll();
-    ProductMainPageDto getById(int id);
-    void update(ProductMainPageDto productMainPageDto);
-    void delete(int id);
+    void save(ProductDto productDto);
+    List<ProductDto> getAll();
+    ProductDto getById(Long id);
+    void update(ProductDto productDto);
+    void delete(Long id);
 }

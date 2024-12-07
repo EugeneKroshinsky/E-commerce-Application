@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductMainPageDto {
+public class AdminProductDto {
     private Long id;
     private String name;
     private String description;

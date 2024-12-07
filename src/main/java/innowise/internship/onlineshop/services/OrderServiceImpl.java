@@ -25,7 +25,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public OrderDto getById(int id) {
+    public OrderDto getById(Long id) {
         throw new UnsupportedOperationException();
     }
 
@@ -35,7 +35,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(Long id) {
         throw new UnsupportedOperationException();
     }
 }

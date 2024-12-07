@@ -8,7 +8,7 @@
 <a href="javascript:history.back()">Back</a>
 <h1>Product Management</h1>
 
-<a href="${pageContext.request.contextPath}/admin/add/productEntity">Create New Product</a>
+<a href="${pageContext.request.contextPath}/admin/add/product">Create New Product</a>
 
 <table border="1" cellpadding="10" cellspacing="0">
     <thead>
@@ -23,21 +23,21 @@
     </tr>
     </thead>
     <tbody>
-    <c:forEach var="productEntity" items="${productEntities}">
+    <c:forEach var="product" items="${products}">
         <tr>
-            <td>${productEntity.id}</td>
-            <td>${productEntity.name}</td>
-            <td>${productEntity.description}</td>
-            <td>${productEntity.price}</td>
-            <td>${productEntity.quantity}</td>
-            <td>${productEntity.categoryEntity.name}</td>
+            <td>${product.id}</td>
+            <td>${product.name}</td>
+            <td>${product.description}</td>
+            <td>${product.price}</td>
+            <td>${product.quantity}</td>
+            <td>${product.category.name}</td>
             <td>
-                <form action="${pageContext.request.contextPath}/admin/productEntity" method="POST" style="display: inline;">
+                <form action="${pageContext.request.contextPath}/admin/product" method="POST" style="display: inline;">
                     <input type="hidden" name="action" value="delete">
-                    <input type="hidden" name="id" value="${productEntity.id}">
+                    <input type="hidden" name="id" value="${product.id}">
                     <button type="submit">Delete</button>
                 </form>
-                <form action="${pageContext.request.contextPath}/admin/update/productEntity/${productEntity.id}" method="GET" style="display: inline;">
+                <form action="${pageContext.request.contextPath}/admin/update/product/${product.id}" method="GET" style="display: inline;">
                     <button type="submit">Edit</button>
                 </form>
             </td>

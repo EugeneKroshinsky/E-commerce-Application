@@ -7,7 +7,7 @@ import java.util.List;
 public interface CategoryService {
     void save(CategoryDto categoryDto);
     List<CategoryDto> getAll();
-    CategoryDto getById(int id);
+    CategoryDto getById(Long id);
     void update(CategoryDto categoryDto);
-    void delete(int id);
+    void delete(Long id);
 }

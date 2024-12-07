@@ -28,7 +28,7 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public CategoryDto getById(int id) {
+    public CategoryDto getById(Long id) {
         throw new UnsupportedOperationException();
     }
 
@@ -38,7 +38,7 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(Long id) {
         throw new UnsupportedOperationException();
     }
 }

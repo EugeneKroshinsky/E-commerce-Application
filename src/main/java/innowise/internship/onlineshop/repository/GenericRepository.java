@@ -5,7 +5,7 @@ import java.util.List;
 public interface GenericRepository<T>{
     void save(T object);
     List<T> getAll();
-    T getById(int id);
+    T getById(Long id);
     void update(T object);
-    void delete(int id);
+    void delete(Long id);
 }

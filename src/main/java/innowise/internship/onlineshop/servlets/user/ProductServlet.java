@@ -1,6 +1,6 @@
 package innowise.internship.onlineshop.servlets.user;
 
-import innowise.internship.onlineshop.mapper.ProductMainPageMapper;
+import innowise.internship.onlineshop.mapper.ProductMapper;
 import innowise.internship.onlineshop.services.ProductServiceImpl;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -16,7 +16,7 @@ public class ProductServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.setAttribute("product", ProductMainPageMapper.toDto(request));
+        request.setAttribute("product", ProductMapper.toDto(request));
         getServletContext().getRequestDispatcher("/user/product.jsp").forward(request, response);
     }
 }

@@ -1,8 +1,8 @@
 package innowise.internship.onlineshop.services;
 
-import innowise.internship.onlineshop.dto.ProductMainPageDto;
+import innowise.internship.onlineshop.dto.ProductDto;
 import innowise.internship.onlineshop.model.ProductEntity;
-import innowise.internship.onlineshop.mapper.ProductMainPageMapper;
+import innowise.internship.onlineshop.mapper.ProductMapper;
 import innowise.internship.onlineshop.repository.GenericRepository;
 import innowise.internship.onlineshop.repository.GenericRepositoryImpl;
 
@@ -17,29 +17,29 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public void save(ProductMainPageDto productMainPageDto) {
+    public void save(ProductDto productDto) {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public List<ProductMainPageDto> getAll() {
+    public List<ProductDto> getAll() {
         return productRepository.getAll().stream()
-                .map(ProductMainPageMapper::toDto)
+                .map(ProductMapper::toDto)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public ProductMainPageDto getById(int id) {
-        return ProductMainPageMapper.toDto(productRepository.getById(id));
+    public ProductDto getById(Long id) {
+        return ProductMapper.toDto(productRepository.getById(id));
     }
 
     @Override
-    public void update(ProductMainPageDto productMainPageDto) {
+    public void update(ProductDto productDto) {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public void delete(int id) {
-        throw new UnsupportedOperationException();
+    public void delete(Long id) {
+        productRepository.delete(id);
     }
 }
