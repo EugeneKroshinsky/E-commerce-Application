@@ -56,6 +56,7 @@ public class ProductService {
             throw new IllegalArgumentException("Product must not be null");
         }
         log.info("Updating product with ID {}: {}", id, product);
+        product.setId(id);
         productDao.update(product);
         log.info("Product updated successfully");
     }

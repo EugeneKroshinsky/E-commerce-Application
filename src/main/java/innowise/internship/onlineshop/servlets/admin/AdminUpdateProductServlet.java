@@ -11,19 +11,31 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
+
 @Slf4j
-@WebServlet(value = "/admin/add/product")
-public class AdminAddProductServlet extends HttpServlet {
-    private final ProductService productService = new ProductService();
+@WebServlet(value = "/admin/update/product/*")
+public class AdminUpdateProductServlet extends HttpServlet {
     private final CategoryService categoryService = new CategoryService();
+    private final ProductService productService = new ProductService();
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.setAttribute("categories", categoryService.getAll());
-        request.getRequestDispatcher("/admin/admin_add_product.jsp").forward(request, response);
+        String pathInfo = request.getPathInfo();
+        if (pathInfo != null && pathInfo.startsWith("/")) {
+            pathInfo = pathInfo.substring(1);
+        }
+        try {
+            int id = Integer.parseInt(request.getPathInfo().substring(1));
+            request.setAttribute("product", productService.getById(id));
+            request.setAttribute("categories", categoryService.getAll());
+            getServletContext().getRequestDispatcher("/admin/admin_update_product.jsp").forward(request, response);
+        } catch (NumberFormatException e) {
+            log.error("Invalid product ID: {}", pathInfo);
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid product ID");
+        }
     }
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
         Product product = new Product();
         product.setName(request.getParameter("name"));
         product.setDescription(request.getParameter("description"));
@@ -33,7 +45,7 @@ public class AdminAddProductServlet extends HttpServlet {
         //TODO: реализовать добавление картинок
         product.setImageUrl("https://via.placeholder.com/150");
         log.info("Product: {}", product);
-        productService.save(product);
+        productService.update(id, product);
         response.sendRedirect(request.getContextPath() + "/admin/product");
     }
 }

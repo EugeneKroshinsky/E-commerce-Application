@@ -37,9 +37,7 @@
                     <input type="hidden" name="id" value="${product.id}">
                     <button type="submit">Delete</button>
                 </form>
-                <form action="${pageContext.request.contextPath}/admin/product" method="GET" style="display: inline;">
-                    <input type="hidden" name="action" value="update">
-                    <input type="hidden" name="id" value="${product.id}">
+                <form action="${pageContext.request.contextPath}/admin/update/product/${product.id}" method="GET" style="display: inline;">
                     <button type="submit">Edit</button>
                 </form>
             </td>
