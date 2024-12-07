@@ -18,7 +18,7 @@ public class GenericRepositoryImpl <T> implements GenericRepository<T> {
     public void save(T object) {
         try (Session session = sessionFactory.getCurrentSession()) {
             session.beginTransaction();
-            session.save(object);
+            session.persist(object);
             session.getTransaction().commit();
         }
     }

@@ -26,7 +26,7 @@
     </c:forEach>
 
     <p><b>Total: </b>${cart.stream().map(ct -> ct.product.price * ct.quantity).sum()}</p>
-    <a href="${pageContext.request.contextPath}/orderEntity">Order</a>
+    <a href="${pageContext.request.contextPath}/order">Order</a>
     <br>
     <a href="${pageContext.request.contextPath}/mainPage">Back</a>
     <jsp:include page="footer.html" />

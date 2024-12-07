@@ -1,6 +1,8 @@
 package innowise.internship.onlineshop.services;
 
+import innowise.internship.onlineshop.dto.OrderDto;
 import innowise.internship.onlineshop.entities.OrderEntity;
+import innowise.internship.onlineshop.mapper.OrderMapper;
 import innowise.internship.onlineshop.repository.GenericRepositoryImpl;
 
 import java.util.List;
@@ -13,22 +15,22 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void save(Object order) {
+    public void save(OrderDto order) {
+        orderRepository.save(OrderMapper.toEntity(order));
+    }
+
+    @Override
+    public List<OrderDto> getAll() {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public List<Object> getAll() {
+    public OrderDto getById(int id) {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public Object getById(int id) {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
-    public void update(Object Order) {
+    public void update(OrderDto Order) {
         throw new UnsupportedOperationException();
     }
 

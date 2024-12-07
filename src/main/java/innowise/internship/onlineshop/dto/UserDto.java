@@ -8,7 +8,6 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class OrderItemDto {
-    private int quantity;
-    private ProductMainPageDto product;
+public class UserDto {
+    private int id;
 }

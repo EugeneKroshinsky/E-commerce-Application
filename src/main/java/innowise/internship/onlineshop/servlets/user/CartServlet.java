@@ -1,10 +1,8 @@
 package innowise.internship.onlineshop.servlets.user;
 
-import innowise.internship.onlineshop.dto.OrderItemDto;
-import innowise.internship.onlineshop.mapper.OrderItemMapper;
+import innowise.internship.onlineshop.dto.CartDto;
+import innowise.internship.onlineshop.mapper.CartMapper;
 import innowise.internship.onlineshop.services.CartService;
-import innowise.internship.onlineshop.services.ProductService;
-import innowise.internship.onlineshop.services.ProductServiceImpl;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -33,13 +31,13 @@ public class CartServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         HttpSession session = request.getSession();
-        OrderItemDto orderItemDto = OrderItemMapper.toDto(request);
+        CartDto cartDto = CartMapper.toDto(request);
 
         String action = request.getParameter("action");
         if ("add".equals(action)) {
-            cartService.addToCart(session, orderItemDto);
+            cartService.addToCart(session, cartDto);
         } else if ("delete".equals(action)) {
-            cartService.removeFromCart(session, orderItemDto);
+            cartService.removeFromCart(session, cartDto);
         }
 
         response.sendRedirect(request.getContextPath() + "/cart");

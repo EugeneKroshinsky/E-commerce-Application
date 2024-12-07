@@ -1,5 +1,6 @@
 package innowise.internship.onlineshop.mapper;
 
+import innowise.internship.onlineshop.dto.CategoryDto;
 import innowise.internship.onlineshop.dto.ProductMainPageDto;
 import innowise.internship.onlineshop.entities.ProductEntity;
 import innowise.internship.onlineshop.services.ProductService;
@@ -14,9 +15,10 @@ public class ProductMainPageMapper {
                 productEntity.getName(),
                 productEntity.getDescription(),
                 productEntity.getPrice(),
-                productEntity.getCategoryEntity().getName(),
+                CategoryMapper.toDto(productEntity.getCategoryEntity()),
                 productEntity.getImageUrl(),
-                productEntity.getQuantity()
+                productEntity.getQuantity(),
+                productEntity.getCreatedAt()
         );
     }
     public static ProductMainPageDto toDto(HttpServletRequest request) {
@@ -26,5 +28,17 @@ public class ProductMainPageMapper {
         }
         int id = Integer.parseInt(request.getPathInfo().substring(1));
         return productService.getById(id);
+    }
+    public static ProductEntity toEntity(ProductMainPageDto productMainPageDto) {
+        ProductEntity productEntity = new ProductEntity();
+        productEntity.setName(productMainPageDto.getName());
+        productEntity.setDescription(productMainPageDto.getDescription());
+        productEntity.setPrice(productMainPageDto.getPrice());
+        productEntity.setCategoryEntity((CategoryMapper.toEntity(productMainPageDto.getCategory())));
+        productEntity.setImageUrl(productMainPageDto.getImageUrl());
+        productEntity.setQuantity(productMainPageDto.getQuantity());
+        productEntity.setId(productMainPageDto.getId());
+        productEntity.setCreatedAt(productMainPageDto.getCreatedAt());
+        return productEntity;
     }
 }
