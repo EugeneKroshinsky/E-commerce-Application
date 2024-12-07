@@ -30,7 +30,6 @@ public class OrderServlet extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         OrderDto orderDto = OrderMapper.toDto(request);
-
         orderService.save(orderDto);
         session.removeAttribute("cart");
         request.setAttribute("order", orderDto);

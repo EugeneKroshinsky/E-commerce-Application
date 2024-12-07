@@ -12,7 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class OrderDto {
-    private int id;
+    private Long id;
     private UserDto user;
     private String lastName;
     private String firstName;

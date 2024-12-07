@@ -1,7 +1,7 @@
 package innowise.internship.onlineshop.mapper;
 
 import innowise.internship.onlineshop.dto.UserDto;
-import innowise.internship.onlineshop.entities.UserEntity;
+import innowise.internship.onlineshop.model.UserEntity;
 
 public class UserMapper {
     public static UserDto toDto(UserEntity userEntity) {

@@ -1,8 +1,7 @@
 package innowise.internship.onlineshop.mapper;
 
-import innowise.internship.onlineshop.dto.CategoryDto;
 import innowise.internship.onlineshop.dto.ProductMainPageDto;
-import innowise.internship.onlineshop.entities.ProductEntity;
+import innowise.internship.onlineshop.model.ProductEntity;
 import innowise.internship.onlineshop.services.ProductService;
 import innowise.internship.onlineshop.services.ProductServiceImpl;
 import jakarta.servlet.http.HttpServletRequest;

@@ -11,5 +11,4 @@ import lombok.*;
 public class CartDto {
     private int quantity;
     private ProductMainPageDto product;
-    private OrderDto order;
 }

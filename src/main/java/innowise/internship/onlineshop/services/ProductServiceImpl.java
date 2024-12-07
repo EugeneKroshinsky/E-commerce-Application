@@ -1,7 +1,7 @@
 package innowise.internship.onlineshop.services;
 
 import innowise.internship.onlineshop.dto.ProductMainPageDto;
-import innowise.internship.onlineshop.entities.ProductEntity;
+import innowise.internship.onlineshop.model.ProductEntity;
 import innowise.internship.onlineshop.mapper.ProductMainPageMapper;
 import innowise.internship.onlineshop.repository.GenericRepository;
 import innowise.internship.onlineshop.repository.GenericRepositoryImpl;

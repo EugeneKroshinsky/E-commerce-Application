@@ -1,6 +1,6 @@
 package innowise.internship.onlineshop.servlets.admin.product;
 
-import innowise.internship.onlineshop.entities.ProductEntity;
+import innowise.internship.onlineshop.model.ProductEntity;
 import innowise.internship.onlineshop.services.CategoryServiceImpl;
 import innowise.internship.onlineshop.services.ProductServiceImpl;
 import jakarta.servlet.ServletException;

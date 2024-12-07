@@ -2,7 +2,8 @@ package innowise.internship.onlineshop.mapper;
 
 import innowise.internship.onlineshop.dto.OrderDto;
 import innowise.internship.onlineshop.dto.CartDto;
-import innowise.internship.onlineshop.entities.OrderEntity;
+import innowise.internship.onlineshop.model.OrderEntity;
+import innowise.internship.onlineshop.model.OrderItemEntity;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
@@ -46,7 +47,7 @@ public class OrderMapper {
                 .mapToDouble(el-> el).sum());
         return orderDto;
     }
-        public static OrderEntity toEntity(OrderDto orderDto) {
+    public static OrderEntity toEntity(OrderDto orderDto) {
             OrderEntity orderEntity = new OrderEntity();
             orderEntity.setAddress(orderDto.getAddress());
             orderEntity.setFirstName(orderDto.getFirstName());
@@ -57,10 +58,12 @@ public class OrderMapper {
             orderEntity.setStatus(orderDto.getStatus());
             orderEntity.setTotalPrice(orderDto.getTotalPrice());
             orderEntity.setCreatedAt(orderDto.getCreatedAt());
-            orderEntity.setItems(orderDto.getOrderItems().stream()
-                    .map(CartMapper::toEntity)
-                    .toList());
             orderEntity.setUserEntity(UserMapper.toEntity(orderDto.getUser()));
+
+            List<OrderItemEntity> orderItemEntities = orderDto.getOrderItems().stream()
+                .map(el -> CartMapper.toEntity(el, orderEntity))
+                .toList();
+            orderEntity.setItems(orderItemEntities);
             return orderEntity;
         }
 }

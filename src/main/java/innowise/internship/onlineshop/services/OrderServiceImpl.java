@@ -1,7 +1,7 @@
 package innowise.internship.onlineshop.services;
 
 import innowise.internship.onlineshop.dto.OrderDto;
-import innowise.internship.onlineshop.entities.OrderEntity;
+import innowise.internship.onlineshop.model.OrderEntity;
 import innowise.internship.onlineshop.mapper.OrderMapper;
 import innowise.internship.onlineshop.repository.GenericRepositoryImpl;
 

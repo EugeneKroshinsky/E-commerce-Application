@@ -1,4 +1,4 @@
-package innowise.internship.onlineshop.entities;
+package innowise.internship.onlineshop.model;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -15,7 +15,7 @@ public class RoleEntity {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "name", nullable = false, unique = true)
