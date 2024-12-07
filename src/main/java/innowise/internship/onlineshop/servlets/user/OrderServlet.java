@@ -8,10 +8,12 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 import java.util.List;
 
+@Slf4j
 @WebServlet(value = "/order")
 public class OrderServlet extends HttpServlet {
     private final OrderService orderService = new OrderService();
@@ -25,34 +27,36 @@ public class OrderServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
-        Order order = createOrder(request, session);
+        OrderEntity orderEntity = createOrder(request, session);
         try {
-            orderService.save(order);
+            orderService.save(orderEntity);
         } catch (Exception e) {
+            log.error("Failed to save order", e);
             getServletContext().getRequestDispatcher("/user/order_error.jsp").forward(request, response);
             return;
         }
         session.removeAttribute("cart");
-        request.setAttribute("order", order);
+        request.setAttribute("order", orderEntity);
         getServletContext().getRequestDispatcher("/user/order_success.jsp").forward(request, response);
     }
 
     //TODO: Реализовать логику удаления заказанных товраов из базы данных
 
-    private Order createOrder(HttpServletRequest request, HttpSession session) {
-        List<OrderItem> cart = (List<OrderItem>) session.getAttribute("cart");
-        Order order = new Order();
-        order.setItems(cart);
-        order.setUser(null);
-        order.setAddress(request.getParameter("address"));
-        order.setComment(request.getParameter("comment"));
-        order.setFirstName(request.getParameter("firstName"));
-        order.setLastName(request.getParameter("lastName"));
-        order.setEmail(request.getParameter("email"));
-        order.setPhone(request.getParameter("phone"));
-        order.setTotalPrice(cart.stream()
-                .map(ct -> ct.getProduct().getPrice() * ct.getQuantity())
+    private OrderEntity createOrder(HttpServletRequest request, HttpSession session) {
+        List<OrderItemEntity> cart = (List<OrderItemEntity>) session.getAttribute("cart");
+        OrderEntity orderEntity = new OrderEntity();
+        orderEntity.setItems(cart);
+        orderEntity.setUserEntity(null);
+        orderEntity.setAddress(request.getParameter("address"));
+        orderEntity.setComment(request.getParameter("comment"));
+        orderEntity.setFirstName(request.getParameter("firstName"));
+        orderEntity.setLastName(request.getParameter("lastName"));
+        orderEntity.setEmail(request.getParameter("email"));
+        orderEntity.setPhone(request.getParameter("phone"));
+        orderEntity.setTotalPrice(cart.stream()
+                .map(ct -> ct.getProductEntity().getPrice() * ct.getQuantity())
                 .mapToDouble(el-> el).sum());
-        return order;
+        log.info("Order: {}", orderEntity);
+        return orderEntity;
     }
 }

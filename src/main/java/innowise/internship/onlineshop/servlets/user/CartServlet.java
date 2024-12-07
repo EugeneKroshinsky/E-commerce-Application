@@ -1,7 +1,7 @@
 package innowise.internship.onlineshop.servlets.user;
 
-import innowise.internship.onlineshop.entities.OrderItem;
-import innowise.internship.onlineshop.entities.Product;
+import innowise.internship.onlineshop.entities.OrderItemEntity;
+import innowise.internship.onlineshop.entities.ProductEntity;
 import innowise.internship.onlineshop.services.ProductService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -21,7 +21,7 @@ public class CartServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
-        List<OrderItem> cart = getCart(session);
+        List<OrderItemEntity> cart = getCart(session);
         request.setAttribute("cart", cart);
         request.getRequestDispatcher("/user/cart.jsp").forward(request, response);
     }
@@ -34,37 +34,37 @@ public class CartServlet extends HttpServlet {
         if ("add".equals(action)) {
             int productId = Integer.parseInt(productIdParam);
             int quantity = Integer.parseInt(quantityParam);
-            Product product = productService.getById(productId);
-            OrderItem orderItem = new OrderItem();
-            orderItem.setQuantity(quantity);
-            orderItem.setProduct(product);
-            addToCart(session, orderItem);
+            ProductEntity productEntity = productService.getById(productId);
+            OrderItemEntity orderItemEntity = new OrderItemEntity();
+            orderItemEntity.setQuantity(quantity);
+            orderItemEntity.setProductEntity(productEntity);
+            addToCart(session, orderItemEntity);
         } else if ("delete".equals(action)) {
             int productId = Integer.parseInt(productIdParam);
             removeFromCart(session, productId);
         }
         response.sendRedirect(request.getContextPath() + "/cart");
     }
-    private List<OrderItem> getCart(HttpSession session) {
-        List<OrderItem> cart = (List<OrderItem>) session.getAttribute("cart");
+    private List<OrderItemEntity> getCart(HttpSession session) {
+        List<OrderItemEntity> cart = (List<OrderItemEntity>) session.getAttribute("cart");
         if (cart == null) {
             cart = new ArrayList<>();
             session.setAttribute("cart", cart);
         }
         return cart;
     }
-    private void addToCart(HttpSession session, OrderItem item) {
-        List<OrderItem> cart = getCart(session);
-        for (OrderItem orderItem : cart) {
-            if (orderItem.getProduct().getId() == item.getProduct().getId()) {
-                orderItem.setQuantity(orderItem.getQuantity() + item.getQuantity());
+    private void addToCart(HttpSession session, OrderItemEntity item) {
+        List<OrderItemEntity> cart = getCart(session);
+        for (OrderItemEntity orderItemEntity : cart) {
+            if (orderItemEntity.getProductEntity().getId() == item.getProductEntity().getId()) {
+                orderItemEntity.setQuantity(orderItemEntity.getQuantity() + item.getQuantity());
                 return;
             }
         }
         cart.add(item);
     }
     private void removeFromCart(HttpSession session, int productId) {
-        List<OrderItem> cart = getCart(session);
-        cart.removeIf(item -> item.getProduct().getId() == productId);
+        List<OrderItemEntity> cart = getCart(session);
+        cart.removeIf(item -> item.getProductEntity().getId() == productId);
     }
 }

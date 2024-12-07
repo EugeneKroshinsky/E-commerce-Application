@@ -8,10 +8,6 @@ import java.util.Set;
 
 @Entity
 @Table(name = "roles")
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter
-@Setter
 public class RoleEntity {
     @Id
     @Column(name = "id")
@@ -23,6 +19,6 @@ public class RoleEntity {
     private Role role;
 
     @ManyToMany(mappedBy = "roles")
-    private Set<User> users = new HashSet<>();
+    private Set<UserEntity> userEntities = new HashSet<>();
 }
 

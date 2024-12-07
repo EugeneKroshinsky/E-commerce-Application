@@ -5,16 +5,11 @@ import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
 @Table(name = "users")
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-public class User {
+public class UserEntity {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -47,10 +42,10 @@ public class User {
     private LocalDateTime createdAt;
 
     @OneToOne(mappedBy = "user")
-    private Cart cart;
+    private CartEntity cartEntity;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Order> orders;
+    private Set<OrderEntity> orderEntities = new HashSet<>();
 
     @PrePersist
     private void onCreate() {

@@ -10,7 +10,7 @@
             <p>Cart is empty</p>
         </c:if>
         <c:if test="${!cart.isEmpty()}">
-            <form action="${pageContext.request.contextPath}/order" method="post">
+            <form action="${pageContext.request.contextPath}/orderEntity" method="post">
                 <label for="firstName">First Name</label>
                 <input type="text" id="firstName" name="firstName" required>
                 <br>

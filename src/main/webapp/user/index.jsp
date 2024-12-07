@@ -9,19 +9,19 @@
     <jsp:include page="header.jsp" />
     <form action="/search" method="get">
         <label for="search">Search:</label>
-        <input type="text" id="search" name="search" value="${param.search}" placeholder="Enter product name">
+        <input type="text" id="search" name="search" value="${param.search}" placeholder="Enter productEntity name">
         <button type="submit">Search</button>
     </form>
     <hr>
     <form action="/filter" method="get">
             <p>Filters:</p>
-            <label for="category">Category:</label>
-            <select id="category" name="category">
+            <label for="categoryEntity">Category:</label>
+            <select id="categoryEntity" name="categoryEntity">
                 <option value="">All</option>
-                <c:forEach var="category" items="${categories}">
-                    <option value="${category.name}"
-                            <c:if test="${param.category.name == category.name}">selected</c:if>>
-                            ${category.name}
+                <c:forEach var="categoryEntity" items="${categories}">
+                    <option value="${categoryEntity.name}"
+                            <c:if test="${param.categoryEntity.name == categoryEntity.name}">selected</c:if>>
+                            ${categoryEntity.name}
                     </option>
                 </c:forEach>
             </select>
@@ -45,19 +45,19 @@
 
     <hr>
     <h1>Products</h1>
-    <c:if test="${products.isEmpty()}">
-        <p>No products</p>
+    <c:if test="${productEntities.isEmpty()}">
+        <p>No productEntities</p>
     </c:if>
-    <c:forEach var="product" items="${products}">
+    <c:forEach var="productEntity" items="${productEntities}">
         <hr>
-        <a href="${pageContext.request.contextPath}/product/${product.id}">Name: ${product.name}</a>
-        <p>Description: ${product.description}</p>
-        <p>Price: ${product.price}</p>
-        <p>Quantity: ${product.quantity}</p>
-        <p>Category: ${product.category.name}</p>
+        <a href="${pageContext.request.contextPath}/productEntity/${productEntity.id}">Name: ${productEntity.name}</a>
+        <p>Description: ${productEntity.description}</p>
+        <p>Price: ${productEntity.price}</p>
+        <p>Quantity: ${productEntity.quantity}</p>
+        <p>Category: ${productEntity.categoryEntity.name}</p>
         <form action="${pageContext.request.contextPath}/cart" method="POST">
             <input type="hidden" name="action" value="add">
-            <input type="hidden" name="productId" value="${product.id}">
+            <input type="hidden" name="productId" value="${productEntity.id}">
             <label>Quantity:</label>
             <input type="number" name="quantity" min="1" value="1">
             <button type="submit">Add to Cart</button>

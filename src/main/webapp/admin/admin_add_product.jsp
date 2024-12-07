@@ -8,7 +8,7 @@
 <a href="javascript:history.back()">Back</a>
 <h1>Create New Product</h1>
 
-<form action="${pageContext.request.contextPath}/admin/add/product" method="post" >
+<form action="${pageContext.request.contextPath}/admin/add/productEntity" method="post" >
     <label for="name">Product Name:</label>
     <input type="text" id="name" name="name" required>
     <br><br>
@@ -25,11 +25,11 @@
     <input type="number" id="quantity" name="quantity" min="0" required>
     <br><br>
 
-    <label for="category">Category:</label>
-    <select id="category" name="categoryId">
+    <label for="categoryEntity">Category:</label>
+    <select id="categoryEntity" name="categoryId">
         <option value="">-- Select a Category --</option>
-        <c:forEach var="category" items="${categories}">
-            <option value="${category.id}">${category.name}</option>
+        <c:forEach var="categoryEntity" items="${categories}">
+            <option value="${categoryEntity.id}">${categoryEntity.name}</option>
         </c:forEach>
     </select>
     <br><br>

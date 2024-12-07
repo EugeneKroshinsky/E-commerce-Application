@@ -13,12 +13,12 @@
         <property name="hibernate.current_session_context_class">thread</property>
         <property name="hibernate.hbm2ddl.auto">update</property>
         <property name="hibernate.show_sql">true</property>
-        <mapping class="innowise.internship.onlineshop.entities.Product"/>
-        <mapping class="innowise.internship.onlineshop.entities.User"/>
+        <mapping class="innowise.internship.onlineshop.entities.ProductEntity"/>
+        <mapping class="innowise.internship.onlineshop.entities.UserEntity"/>
         <mapping class="innowise.internship.onlineshop.entities.RoleEntity"/>
-        <mapping class="innowise.internship.onlineshop.entities.Cart"/>
-        <mapping class="innowise.internship.onlineshop.entities.Order"/>
-        <mapping class="innowise.internship.onlineshop.entities.OrderItem"/>
-        <mapping class="innowise.internship.onlineshop.entities.Category"/>
+        <mapping class="innowise.internship.onlineshop.entities.CartEntity"/>
+        <mapping class="innowise.internship.onlineshop.entities.OrderEntity"/>
+        <mapping class="innowise.internship.onlineshop.entities.OrderItemEntity"/>
+        <mapping class="innowise.internship.onlineshop.entities.CategoryEntity"/>
     </session-factory>
 </hibernate-configuration>

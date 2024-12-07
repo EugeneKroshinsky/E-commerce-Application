@@ -12,22 +12,22 @@
     </c:if>
     <c:forEach var="item" items="${cart}">
         <hr>
-        <p><b>Name: </b>${item.product.name}</p>
-        <p><b>Description: </b>${item.product.description}</p>
-        <p><b>Price: </b>${item.product.price}</p>
+        <p><b>Name: </b>${item.productEntity.name}</p>
+        <p><b>Description: </b>${item.productEntity.description}</p>
+        <p><b>Price: </b>${item.productEntity.price}</p>
         <p><b>Quantity: </b>${item.quantity}</p>
-        <p><b>Total price: </b>${item.quantity * item.product.price}</p>
+        <p><b>Total price: </b>${item.quantity * item.productEntity.price}</p>
         <hr>
         <form action="${pageContext.request.contextPath}/cart" method="POST">
             <input type="hidden" name="action" value="delete">
-            <input type="hidden" name="productId" value="${item.product.id}">
+            <input type="hidden" name="productId" value="${item.productEntity.id}">
             <label>Quantity:</label>
             <button type="submit">Delete</button>
         </form>
     </c:forEach>
 
-    <p><b>Total: </b>${cart.stream().map(ct -> ct.product.price * ct    .quantity).sum()}</p>
-    <a href="${pageContext.request.contextPath}/order">Order</a>
+    <p><b>Total: </b>${cart.stream().map(ct -> ct.productEntity.price * ct    .quantity).sum()}</p>
+    <a href="${pageContext.request.contextPath}/orderEntity">Order</a>
     <br>
     <a href="${pageContext.request.contextPath}/mainPage">Back</a>
     <jsp:include page="footer.html" />

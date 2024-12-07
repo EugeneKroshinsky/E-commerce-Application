@@ -1,6 +1,6 @@
-package innowise.internship.onlineshop.servlets.admin;
+package innowise.internship.onlineshop.servlets.admin.product;
 
-import innowise.internship.onlineshop.entities.Product;
+import innowise.internship.onlineshop.entities.ProductEntity;
 import innowise.internship.onlineshop.services.CategoryService;
 import innowise.internship.onlineshop.services.ProductService;
 import jakarta.servlet.ServletException;
@@ -24,16 +24,16 @@ public class AdminAddProductServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Product product = new Product();
-        product.setName(request.getParameter("name"));
-        product.setDescription(request.getParameter("description"));
-        product.setPrice(Double.parseDouble(request.getParameter("price")));
-        product.setCategory(categoryService.getById(Integer.parseInt(request.getParameter("categoryId"))));
-        product.setQuantity(Integer.parseInt(request.getParameter("quantity")));
+        ProductEntity productEntity = new ProductEntity();
+        productEntity.setName(request.getParameter("name"));
+        productEntity.setDescription(request.getParameter("description"));
+        productEntity.setPrice(Double.parseDouble(request.getParameter("price")));
+        productEntity.setCategoryEntity(categoryService.getById(Integer.parseInt(request.getParameter("categoryId"))));
+        productEntity.setQuantity(Integer.parseInt(request.getParameter("quantity")));
         //TODO: реализовать добавление картинок
-        product.setImageUrl("https://via.placeholder.com/150");
-        log.info("Product: {}", product);
-        productService.save(product);
+        productEntity.setImageUrl("https://via.placeholder.com/150");
+        log.info("Product: {}", productEntity);
+        productService.save(productEntity);
         response.sendRedirect(request.getContextPath() + "/admin/product");
     }
 }

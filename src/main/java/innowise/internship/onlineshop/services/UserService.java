@@ -1,62 +1,62 @@
 package innowise.internship.onlineshop.services;
 
+import innowise.internship.onlineshop.entities.UserEntity;
 import innowise.internship.onlineshop.repository.GenericRepositoryImpl;
-import innowise.internship.onlineshop.entities.User;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
 
 @Slf4j
 public class UserService {
-    private final GenericRepositoryImpl<User> userDao;
+    private final GenericRepositoryImpl<UserEntity> userDao;
 
     public UserService() {
-        this.userDao = new GenericRepositoryImpl<>(User.class);
+        this.userDao = new GenericRepositoryImpl<>(UserEntity.class);
     }
 
-    public List<User> getAll() {
+    public List<UserEntity> getAll() {
         log.info("Fetching all users");
-        List<User> users = userDao.getAll();
-        log.info("Fetched {} users", users.size());
-        return users;
+        List<UserEntity> userEntities = userDao.getAll();
+        log.info("Fetched {} users", userEntities.size());
+        return userEntities;
     }
 
-    public User getById(int id) {
+    public UserEntity getById(int id) {
         if (id < 0) {
             log.error("Invalid ID: {}", id);
             throw new IllegalArgumentException("Id must be greater than 0");
         }
         log.info("Fetching user by ID: {}", id);
-        User user = userDao.getById(id);
-        if (user == null) {
+        UserEntity userEntity = userDao.getById(id);
+        if (userEntity == null) {
             log.warn("User with ID {} not found", id);
         } else {
-            log.info("Fetched user: {}", user);
+            log.info("Fetched user: {}", userEntity);
         }
-        return user;
+        return userEntity;
     }
 
-    public void save(User user) {
-        if (user == null) {
+    public void save(UserEntity userEntity) {
+        if (userEntity == null) {
             log.error("Attempted to save null user");
             throw new IllegalArgumentException("User must not be null");
         }
-        log.info("Saving user: {}", user);
-        userDao.save(user);
+        log.info("Saving user: {}", userEntity);
+        userDao.save(userEntity);
         log.info("User saved successfully");
     }
 
-    public void update(int id, User user) {
+    public void update(int id, UserEntity userEntity) {
         if (id < 0) {
             log.error("Invalid ID: {}", id);
             throw new IllegalArgumentException("Id must be greater than 0");
         }
-        if (user == null) {
+        if (userEntity == null) {
             log.error("Attempted to update with null user");
             throw new IllegalArgumentException("User must not be null");
         }
-        log.info("Updating user with ID {}: {}", id, user);
-        userDao.update(user);
+        log.info("Updating user with ID {}: {}", id, userEntity);
+        userDao.update(userEntity);
         log.info("User updated successfully");
     }
 

@@ -1,4 +1,4 @@
-package innowise.internship.onlineshop.servlets.admin;
+package innowise.internship.onlineshop.servlets.admin.product;
 
 import innowise.internship.onlineshop.services.ProductService;
 import jakarta.servlet.ServletException;

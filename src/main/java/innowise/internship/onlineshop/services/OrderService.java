@@ -1,62 +1,62 @@
 package innowise.internship.onlineshop.services;
 
+import innowise.internship.onlineshop.entities.OrderEntity;
 import innowise.internship.onlineshop.repository.GenericRepositoryImpl;
-import innowise.internship.onlineshop.entities.Order;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
 
 @Slf4j
 public class OrderService {
-    private final GenericRepositoryImpl<Order> orderDao;
+    private final GenericRepositoryImpl<OrderEntity> orderDao;
 
     public OrderService() {
-        this.orderDao = new GenericRepositoryImpl<>(Order.class);
+        this.orderDao = new GenericRepositoryImpl<>(OrderEntity.class);
     }
 
-    public List<Order> getAll() {
+    public List<OrderEntity> getAll() {
         log.info("Fetching all orders");
-        List<Order> orders = orderDao.getAll();
-        log.info("Fetched {} orders", orders.size());
-        return orders;
+        List<OrderEntity> orderEntities = orderDao.getAll();
+        log.info("Fetched {} orders", orderEntities.size());
+        return orderEntities;
     }
 
-    public Order getById(int id) {
+    public OrderEntity getById(int id) {
         if (id < 0) {
             log.error("Invalid ID: {}", id);
             throw new IllegalArgumentException("Id must be greater than 0");
         }
         log.info("Fetching order by ID: {}", id);
-        Order order = orderDao.getById(id);
-        if (order == null) {
+        OrderEntity orderEntity = orderDao.getById(id);
+        if (orderEntity == null) {
             log.warn("Order with ID {} not found", id);
         } else {
-            log.info("Fetched order: {}", order);
+            log.info("Fetched order: {}", orderEntity);
         }
-        return order;
+        return orderEntity;
     }
 
-    public void save(Order order) {
-        if (order == null) {
+    public void save(OrderEntity orderEntity) {
+        if (orderEntity == null) {
             log.error("Attempted to save null order");
             throw new IllegalArgumentException("Order must not be null");
         }
-        log.info("Saving order: {}", order);
-        orderDao.save(order);
+        log.info("Saving order: {}", orderEntity);
+        orderDao.save(orderEntity);
         log.info("Order saved successfully");
     }
 
-    public void update(int id, Order order) {
+    public void update(int id, OrderEntity orderEntity) {
         if (id < 0) {
             log.error("Invalid ID: {}", id);
             throw new IllegalArgumentException("Id must be greater than 0");
         }
-        if (order == null) {
+        if (orderEntity == null) {
             log.error("Attempted to update with null order");
             throw new IllegalArgumentException("Order must not be null");
         }
-        log.info("Updating order with ID {}: {}", id, order);
-        orderDao.update(order);
+        log.info("Updating order with ID {}: {}", id, orderEntity);
+        orderDao.update(orderEntity);
         log.info("Order updated successfully");
     }
 
