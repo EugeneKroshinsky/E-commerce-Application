@@ -30,7 +30,7 @@ public class ProductServiceImpl implements ProductService{
 
     @Override
     public ProductMainPageDto getById(int id) {
-        throw new UnsupportedOperationException();
+        return ProductMainPageMapper.toDto(productRepository.getById(id));
     }
 
     @Override
