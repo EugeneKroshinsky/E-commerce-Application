@@ -21,15 +21,15 @@
     </tr>
     </thead>
     <tbody>
-    <c:forEach var="orderEntity" items="${orderEntities}">
+    <c:forEach var="order" items="${orders}">
         <tr>
-            <td>${orderEntity.id}</td>
-            <td>${orderEntity.firstName}</td>
-            <td>${orderEntity.lastName}</td>
-            <td>${orderEntity.email}</td>
-            <td>${orderEntity.phone}</td>
-            <td>${orderEntity.address}</td>
-            <td>${orderEntity.totalPrice}</td>
+            <td>${order.id}</td>
+            <td>${order.firstName}</td>
+            <td>${order.lastName}</td>
+            <td>${order.email}</td>
+            <td>${order.phone}</td>
+            <td>${order.address}</td>
+            <td>${order.totalPrice}</td>
     </c:forEach>
     </tbody>
 </table>

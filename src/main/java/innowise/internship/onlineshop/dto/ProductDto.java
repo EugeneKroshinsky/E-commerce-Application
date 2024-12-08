@@ -2,8 +2,6 @@ package innowise.internship.onlineshop.dto;
 
 import lombok.*;
 
-import java.time.LocalDateTime;
-
 @ToString
 @EqualsAndHashCode
 @Getter
@@ -15,8 +13,7 @@ public class ProductDto {
     private String name;
     private String description;
     private double price;
-    private CategoryDto category;
+    private CategoryDto category; //private String categoryName;
     private String imageUrl;
     private int quantity;
-    private LocalDateTime createdAt;
 }

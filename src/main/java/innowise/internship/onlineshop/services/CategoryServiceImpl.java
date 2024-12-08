@@ -4,20 +4,17 @@ package innowise.internship.onlineshop.services;
 import innowise.internship.onlineshop.dto.CategoryDto;
 import innowise.internship.onlineshop.model.CategoryEntity;
 import innowise.internship.onlineshop.mapper.CategoryMapper;
-import innowise.internship.onlineshop.repository.GenericRepository;
-import innowise.internship.onlineshop.repository.GenericRepositoryImpl;
+import innowise.internship.onlineshop.repository.BaseRepository;
+import innowise.internship.onlineshop.repository.BaseRepositoryImpl;
+import jakarta.enterprise.context.ApplicationScoped;
 
 import java.util.List;
 
 public class CategoryServiceImpl implements CategoryService {
-    private final GenericRepository<CategoryEntity> categoryRepository;
+    private final BaseRepository<CategoryEntity> categoryRepository;
 
     public CategoryServiceImpl() {
-        this.categoryRepository = new GenericRepositoryImpl<CategoryEntity>(CategoryEntity.class);
-    }
-    @Override
-    public void save(CategoryDto categoryDto) {
-        throw new UnsupportedOperationException();
+        this.categoryRepository = new BaseRepositoryImpl<CategoryEntity>(CategoryEntity.class);
     }
 
     @Override
@@ -29,16 +26,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public CategoryDto getById(Long id) {
-        throw new UnsupportedOperationException();
+        return CategoryMapper.toDto(categoryRepository.getById(id));
     }
 
-    @Override
-    public void update(CategoryDto categoryDto) {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
-    public void delete(Long id) {
-        throw new UnsupportedOperationException();
-    }
 }

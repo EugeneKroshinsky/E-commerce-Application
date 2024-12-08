@@ -1,16 +1,17 @@
 package innowise.internship.onlineshop.repository;
 
 import innowise.internship.onlineshop.utils.HibernateUtil;
+import jakarta.enterprise.context.ApplicationScoped;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import java.util.List;
 
-public class GenericRepositoryImpl <T> implements GenericRepository<T> {
+public class BaseRepositoryImpl<T> implements BaseRepository<T> {
     private final SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
     private Class<T> type;
 
-    public GenericRepositoryImpl(Class<T> type) {
+    public BaseRepositoryImpl(Class<T> type) {
         this.type = type;
     }
 

@@ -17,8 +17,7 @@ public class ProductMapper {
                 productEntity.getPrice(),
                 CategoryMapper.toDto(productEntity.getCategoryEntity()),
                 productEntity.getImageUrl(),
-                productEntity.getQuantity(),
-                productEntity.getCreatedAt()
+                productEntity.getQuantity()
         );
     }
     public static ProductDto toDto(HttpServletRequest request) {
@@ -34,7 +33,6 @@ public class ProductMapper {
         productEntity.setImageUrl(productDto.getImageUrl());
         productEntity.setQuantity(productDto.getQuantity());
         productEntity.setId(productDto.getId());
-        productEntity.setCreatedAt(productDto.getCreatedAt());
         return productEntity;
     }
 }

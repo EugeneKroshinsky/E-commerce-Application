@@ -2,21 +2,18 @@ package innowise.internship.onlineshop.dto;
 
 import lombok.*;
 
-import java.time.LocalDateTime;
-
 @ToString
 @EqualsAndHashCode
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class AdminProductDto {
+public class ProductEditDto {
     private Long id;
     private String name;
     private String description;
     private double price;
-    private CategoryDto category;
+    private Long categoryId;
     private String imageUrl;
     private int quantity;
-    private LocalDateTime createdAt;
 }

@@ -3,22 +3,24 @@ package innowise.internship.onlineshop.services;
 import innowise.internship.onlineshop.dto.ProductDto;
 import innowise.internship.onlineshop.model.ProductEntity;
 import innowise.internship.onlineshop.mapper.ProductMapper;
-import innowise.internship.onlineshop.repository.GenericRepository;
-import innowise.internship.onlineshop.repository.GenericRepositoryImpl;
+import innowise.internship.onlineshop.repository.BaseRepository;
+import innowise.internship.onlineshop.repository.BaseRepositoryImpl;
+import jakarta.inject.Inject;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+
 public class ProductServiceImpl implements ProductService{
-    private final GenericRepository<ProductEntity> productRepository;
+    private  BaseRepository<ProductEntity> productRepository;
 
     public ProductServiceImpl() {
-        this.productRepository = new GenericRepositoryImpl<>(ProductEntity.class);
+        this.productRepository = new BaseRepositoryImpl<>(ProductEntity.class);
     }
 
     @Override
     public void save(ProductDto productDto) {
-        throw new UnsupportedOperationException();
+        productRepository.save(ProductMapper.toEntity(productDto));
     }
 
     @Override
@@ -35,7 +37,7 @@ public class ProductServiceImpl implements ProductService{
 
     @Override
     public void update(ProductDto productDto) {
-        throw new UnsupportedOperationException();
+        productRepository.update(ProductMapper.toEntity(productDto));
     }
 
     @Override
