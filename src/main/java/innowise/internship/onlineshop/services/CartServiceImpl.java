@@ -1,9 +1,7 @@
 package innowise.internship.onlineshop.services;
 
-import innowise.internship.onlineshop.dto.CartDto;
-import jakarta.enterprise.context.Dependent;
+import innowise.internship.onlineshop.dto.OrderItemDto;
 import jakarta.servlet.http.HttpSession;
-import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,8 +9,8 @@ import java.util.List;
 
 public class CartServiceImpl implements CartService{
 
-    public List<CartDto> getCart(HttpSession session) {
-        List<CartDto> cart = (List<CartDto>) session.getAttribute("cart");
+    public List<OrderItemDto> getCart(HttpSession session) {
+        List<OrderItemDto> cart = (List<OrderItemDto>) session.getAttribute("cart");
         if (cart == null) {
             cart = new ArrayList<>();
             session.setAttribute("cart", cart);
@@ -20,9 +18,9 @@ public class CartServiceImpl implements CartService{
         return cart;
     }
 
-    public void addToCart(HttpSession session, CartDto item) {
-        List<CartDto> cart = getCart(session);
-        for (CartDto orderItem : cart) {
+    public void addToCart(HttpSession session, OrderItemDto item) {
+        List<OrderItemDto> cart = getCart(session);
+        for (OrderItemDto orderItem : cart) {
             if (orderItem.getProduct().getId() == item.getProduct().getId()) {
                 orderItem.setQuantity(orderItem.getQuantity() + item.getQuantity());
                 return;
@@ -31,8 +29,8 @@ public class CartServiceImpl implements CartService{
         cart.add(item);
     }
 
-    public void removeFromCart(HttpSession session, CartDto orderItem) {
-        List<CartDto> cart = getCart(session);
+    public void removeFromCart(HttpSession session, OrderItemDto orderItem) {
+        List<OrderItemDto> cart = getCart(session);
         cart.removeIf(item -> item.getProduct().getId() == orderItem.getProduct().getId());
         if(cart.isEmpty()) {
             session.removeAttribute("cart");

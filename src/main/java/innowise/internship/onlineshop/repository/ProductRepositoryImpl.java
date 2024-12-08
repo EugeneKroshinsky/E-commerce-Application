@@ -1,10 +1,10 @@
 package innowise.internship.onlineshop.repository;
 
-import innowise.internship.onlineshop.model.ProductEntity;
+import innowise.internship.onlineshop.model.Product;
 import innowise.internship.onlineshop.repository.base.BaseRepositoryImpl;
 
-public class ProductRepositoryImpl extends BaseRepositoryImpl<ProductEntity> implements ProductRepository{
+public class ProductRepositoryImpl extends BaseRepositoryImpl<Product> implements ProductRepository{
     public ProductRepositoryImpl() {
-        super(ProductEntity.class);
+        super(Product.class);
     }
 }

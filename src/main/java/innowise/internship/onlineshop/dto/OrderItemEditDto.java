@@ -8,7 +8,7 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class CartDto {
+public class OrderItemEditDto {
     private int quantity;
-    private ProductDto product;
+    private Long productId;
 }

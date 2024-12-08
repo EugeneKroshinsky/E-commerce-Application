@@ -14,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "cart")
-public class CartEntity {
+public class Cart {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +22,7 @@ public class CartEntity {
 
     @OneToOne
     @JoinColumn(name = "user_id", nullable = false)
-    private UserEntity userEntity;
+    private User user;
 
     @ManyToMany
     @JoinTable(
@@ -30,7 +30,7 @@ public class CartEntity {
             joinColumns = @JoinColumn(name = "cart_id"),
             inverseJoinColumns = @JoinColumn(name = "product_id")
     )
-    private List<ProductEntity> productEntities;
+    private List<Product> products;
 
     @Column(nullable = false)
     private int quantity;

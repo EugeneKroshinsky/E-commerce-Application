@@ -14,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "products")
-public class ProductEntity {
+public class Product {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,16 +40,16 @@ public class ProductEntity {
 
     @ManyToOne
     @JoinColumn(name = "category_id", nullable = false)
-    private CategoryEntity categoryEntity;
+    private Category category;
 
-    @ManyToMany(mappedBy = "productEntities")
-    private List<CartEntity> cartEntities;
+    @ManyToMany(mappedBy = "products")
+    private List<Cart> cart;
 
     @PrePersist
     private void onCreate() {
         this.createdAt = LocalDateTime.now();
     }
 
-    @OneToMany(mappedBy = "productEntity", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<OrderItemEntity> orderItemEntities;
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<OrderItem> orderItems;
 }

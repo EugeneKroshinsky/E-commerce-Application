@@ -1,6 +1,6 @@
 package innowise.internship.onlineshop.mapper;
 
-import innowise.internship.onlineshop.dto.CartDto;
+import innowise.internship.onlineshop.dto.OrderItemDto;
 import innowise.internship.onlineshop.dto.OrderDto;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -12,7 +12,7 @@ public class OrderMapper {
         HttpSession session = request.getSession();
         OrderDto orderDto = new OrderDto();
         orderDto.setUser(null);
-        List<CartDto> cart = (List<CartDto>) session.getAttribute("cart");
+        List<OrderItemDto> cart = (List<OrderItemDto>) session.getAttribute("cart");
         orderDto.setAddress(request.getParameter("address"));
         orderDto.setComment(request.getParameter("comment"));
         orderDto.setFirstName(request.getParameter("firstName"));

@@ -8,7 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @Entity
 @Table(name = "order_items")
-public class OrderItemEntity {
+public class OrderItem {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,11 +16,11 @@ public class OrderItemEntity {
 
     @ManyToOne
     @JoinColumn(name = "order_id", nullable = false)
-    private OrderEntity orderEntity;
+    private Order order;
 
     @ManyToOne
     @JoinColumn(name = "product_id", nullable = false)
-    private ProductEntity productEntity;
+    private Product product;
 
     @Column(nullable = false)
     private int quantity;

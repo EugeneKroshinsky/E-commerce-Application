@@ -10,7 +10,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class OrderDto {
+public class OrderEditDto {
     private Long id;
     private UserDto user;
     private String lastName;
@@ -21,5 +21,5 @@ public class OrderDto {
     private String address;
     private Double totalPrice;
     private String comment;
-    private List<OrderItemDto> orderItems;
+    private List<Long> orderItemsId;
 }
