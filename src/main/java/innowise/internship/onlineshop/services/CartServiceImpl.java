@@ -1,8 +1,9 @@
 package innowise.internship.onlineshop.services;
 
 import innowise.internship.onlineshop.dto.CartDto;
-import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.Dependent;
 import jakarta.servlet.http.HttpSession;
+import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;

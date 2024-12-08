@@ -19,7 +19,6 @@ public class OrderDto {
     private String email;
     private String phone;
     private String status;
-    private LocalDateTime createdAt;
     private String address;
     private Double totalPrice;
     private String comment;

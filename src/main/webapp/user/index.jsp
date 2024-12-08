@@ -54,7 +54,7 @@
         <p>Description: ${product.description}</p>
         <p>Price: ${product.price}</p>
         <p>Quantity: ${product.quantity}</p>
-        <p>Category: ${product.category}</p>
+        <p>Category: ${product.category.name}</p>
         <form action="${pageContext.request.contextPath}/cart" method="POST">
             <input type="hidden" name="action" value="add">
             <input type="hidden" name="productId" value="${product.id}">

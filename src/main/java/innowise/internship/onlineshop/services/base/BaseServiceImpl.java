@@ -1,36 +1,43 @@
-/*
 package innowise.internship.onlineshop.services.base;
 
-import innowise.internship.onlineshop.repository.BaseRepository;
+import innowise.internship.onlineshop.repository.base.BaseRepository;
+import jakarta.inject.Inject;
+import org.dozer.DozerBeanMapper;
 
 import java.util.List;
 
 public abstract class BaseServiceImpl<TDto, TCreationDto, TUpdateDto, TEntity>
         implements BaseService<TDto, TCreationDto, TUpdateDto>{
+    private Class<TDto> dtoType;
 
-    private final BaseRepository<TEntity> repository;
+    public BaseServiceImpl(Class<TDto> dtoType, BaseRepository<TEntity> repository) {
+        this.dtoType = dtoType;
+        this.repository = repository;
+    }
+
+    protected BaseRepository<TEntity> repository;
+    @Inject
+    private DozerBeanMapper mapper;
 
     @Override
     public void save(TCreationDto creationDto) {
-        //mapping
-        repository.save(toEntity(creationDto));
+       repository.save(mapper.map(creationDto, repository.getEntityClass()));
     }
 
     @Override
     public List<TDto> getAll() {
-        repository.getAll().stream()
-                .map(this::toDto)  //mapping
-                .toList();
+        return repository.getAll().stream()
+                .map(entity -> mapper.map(entity, dtoType)).toList();
     }
 
     @Override
     public TDto getById(Long id) {
-        repository.getById(id); //mapping
+        return mapper.map(repository.getById(id), dtoType);
     }
 
     @Override
-    public void update(TUpdateDto dto) {
-        repository.update(toEntity(dto)); //mapping
+    public void update(TUpdateDto updateDto) {
+        repository.update(mapper.map(updateDto, repository.getEntityClass()));
     }
 
     @Override
@@ -38,4 +45,3 @@ public abstract class BaseServiceImpl<TDto, TCreationDto, TUpdateDto, TEntity>
         repository.delete(id);
     }
 }
-*/

@@ -3,7 +3,6 @@ package innowise.internship.onlineshop.servlets.user;
 import innowise.internship.onlineshop.dto.OrderDto;
 import innowise.internship.onlineshop.mapper.OrderMapper;
 import innowise.internship.onlineshop.services.OrderService;
-import innowise.internship.onlineshop.services.OrderServiceImpl;
 import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

@@ -8,7 +8,7 @@ import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
-import lombok.NoArgsConstructor;
+
 
 @WebServlet(value = "/mainPage")
 public class MainPageServlet extends HttpServlet {

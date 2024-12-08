@@ -3,7 +3,7 @@ package innowise.internship.onlineshop.servlets.user;
 import innowise.internship.onlineshop.dto.CartDto;
 import innowise.internship.onlineshop.mapper.CartMapper;
 import innowise.internship.onlineshop.services.CartService;
-import innowise.internship.onlineshop.services.CartServiceImpl;
+import innowise.internship.onlineshop.services.ProductService;
 import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -20,7 +20,8 @@ import java.io.IOException;
 public class CartServlet extends HttpServlet {
     @Inject
     private CartService cartService;
-
+    @Inject
+    private ProductService productService;
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -31,7 +32,8 @@ public class CartServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         HttpSession session = request.getSession();
-        CartDto cartDto = CartMapper.toDto(request);
+        Long productId = Long.parseLong(request.getParameter("productId"));
+        CartDto cartDto = CartMapper.toDto(request, productService.getById(productId));
 
         String action = request.getParameter("action");
         if ("add".equals(action)) {

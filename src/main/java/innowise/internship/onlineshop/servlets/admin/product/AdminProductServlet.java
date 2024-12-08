@@ -13,16 +13,10 @@ import lombok.NoArgsConstructor;
 
 import java.io.IOException;
 
-@NoArgsConstructor
 @WebServlet(value = "/admin/product")
 public class AdminProductServlet extends HttpServlet {
     @Inject
     private ProductService productService;
-
-    @Inject
-    public AdminProductServlet(ProductService productService) {
-        this.productService = productService;
-    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

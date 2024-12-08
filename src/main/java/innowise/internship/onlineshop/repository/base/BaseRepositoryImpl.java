@@ -1,13 +1,12 @@
-package innowise.internship.onlineshop.repository;
+package innowise.internship.onlineshop.repository.base;
 
 import innowise.internship.onlineshop.utils.HibernateUtil;
-import jakarta.enterprise.context.ApplicationScoped;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import java.util.List;
 
-public class BaseRepositoryImpl<T> implements BaseRepository<T> {
+public abstract class BaseRepositoryImpl<T> implements BaseRepository<T> {
     private final SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
     private Class<T> type;
 
@@ -63,5 +62,10 @@ public class BaseRepositoryImpl<T> implements BaseRepository<T> {
             session.delete(object);
             session.getTransaction().commit();
         }
+    }
+
+    @Override
+    public Class<T> getEntityClass() {
+        return type;
     }
 }

@@ -1,13 +1,10 @@
 package innowise.internship.onlineshop.servlets.admin.product;
 
-import innowise.internship.onlineshop.dto.ProductDto;
+import innowise.internship.onlineshop.dto.ProductEditDto;
 import innowise.internship.onlineshop.mapper.AdminProductMapper;
-import innowise.internship.onlineshop.mapper.ProductMapper;
-import innowise.internship.onlineshop.model.ProductEntity;
 import innowise.internship.onlineshop.services.CategoryService;
-import innowise.internship.onlineshop.services.CategoryServiceImpl;
 import innowise.internship.onlineshop.services.ProductService;
-import innowise.internship.onlineshop.services.ProductServiceImpl;
+import innowise.internship.onlineshop.utils.ParsePathUtil;
 import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -31,8 +28,8 @@ public class AdminUpdateProductServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        ProductDto productDto = ProductMapper.toDto(request);
-        request.setAttribute("product", productService.getById(productDto.getId()));
+        Long id = ParsePathUtil.parsePath(request);
+        request.setAttribute("product", productService.getById(id));
         request.setAttribute("categories", categoryService.getAll());
         getServletContext().getRequestDispatcher("/admin/admin_update_product.jsp").forward(request, response);
     }
@@ -40,7 +37,8 @@ public class AdminUpdateProductServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        ProductDto productDto = AdminProductMapper.toDto(request);
+        Long id = Long.parseLong(request.getParameter("categoryId"));
+        ProductEditDto productDto = AdminProductMapper.toEditDto(request, id);
         productService.update(productDto);
         response.sendRedirect(request.getContextPath() + "/admin/product");
     }
