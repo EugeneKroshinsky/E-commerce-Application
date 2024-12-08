@@ -1,13 +1,19 @@
 package innowise.internship.onlineshop.mapper;
 
+import innowise.internship.onlineshop.dto.CategoryDto;
 import innowise.internship.onlineshop.dto.ProductEditDto;
 import jakarta.servlet.http.HttpServletRequest;
 
 public class AdminProductMapper {
-
-    public static ProductEditDto toEditDto(HttpServletRequest request, Long id) {
+    public static ProductEditDto toEditDto(HttpServletRequest request) {
         ProductEditDto productDto = new ProductEditDto();
-        productDto.setCategoryId(id);
+        String productIdParam = request.getParameter("id");
+        Long productId = productIdParam == null ? null : Long.parseLong(productIdParam);
+        productDto.setId(productId);
+        Long id = Long.parseLong(request.getParameter("categoryId"));
+        CategoryDto categoryDto = new CategoryDto();
+        categoryDto.setId(id);
+        productDto.setCategory(categoryDto);
         productDto.setName(request.getParameter("name"));
         productDto.setDescription(request.getParameter("description"));
         productDto.setPrice(Double.parseDouble(request.getParameter("price")));

@@ -13,7 +13,7 @@ public class ProductEditDto {
     private String name;
     private String description;
     private double price;
-    private Long categoryId;
+    private CategoryDto category;
     private String imageUrl;
     private int quantity;
 }

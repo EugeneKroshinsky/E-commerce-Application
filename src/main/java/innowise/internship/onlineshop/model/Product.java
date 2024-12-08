@@ -42,6 +42,9 @@ public class Product {
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
+/*    @Column(name = "category_id", insertable = false, updatable = false)
+    private Long categoryId;*/
+
     @ManyToMany(mappedBy = "products")
     private List<Cart> cart;
 

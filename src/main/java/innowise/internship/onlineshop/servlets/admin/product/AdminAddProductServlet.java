@@ -35,8 +35,7 @@ public class AdminAddProductServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
-        Long id = Long.parseLong(request.getParameter("categoryId"));
-        ProductEditDto productEditDto = AdminProductMapper.toEditDto(request, id);
+        ProductEditDto productEditDto = AdminProductMapper.toEditDto(request);
         productService.save(productEditDto);
         response.sendRedirect(request.getContextPath() + "/admin/product");
     }
