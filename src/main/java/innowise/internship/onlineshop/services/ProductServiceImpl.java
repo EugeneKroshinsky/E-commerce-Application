@@ -5,7 +5,6 @@ import innowise.internship.onlineshop.model.ProductEntity;
 import innowise.internship.onlineshop.mapper.ProductMapper;
 import innowise.internship.onlineshop.repository.BaseRepository;
 import innowise.internship.onlineshop.repository.BaseRepositoryImpl;
-import jakarta.inject.Inject;
 
 import java.util.List;
 import java.util.stream.Collectors;
