@@ -25,6 +25,7 @@ public abstract class BaseRepositoryImpl<T> implements BaseRepository<T> {
 
     @Override
     public List<T> getAll() {
+        //БЕЗ ТРАНЗАКЦИИ НЕ РАБОТАЕТ
         try (Session session = sessionFactory.getCurrentSession()) {
             session.beginTransaction();
             List<T> objects = session
@@ -38,6 +39,7 @@ public abstract class BaseRepositoryImpl<T> implements BaseRepository<T> {
     @Override
     public T getById(Long id) {
         try (Session session = sessionFactory.getCurrentSession()) {
+            //БЕЗ ТРАНЗАКЦИИ НЕ РАБОТАЕТ
             session.beginTransaction();
             T object = session.get(type, id);
             session.getTransaction().commit();
