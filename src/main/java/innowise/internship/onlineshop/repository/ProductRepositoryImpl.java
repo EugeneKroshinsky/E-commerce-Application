@@ -12,12 +12,12 @@ public class ProductRepositoryImpl extends BaseRepositoryImpl<Product> implement
     }
 
     @Override
-    public List<Product> getByName(String name) {
+    public List<Product> search(String phrase) {
         try (Session session = getSessionFactory().getCurrentSession()) {
             session.beginTransaction();
             List<Product> products = session
-                    .createQuery("select p from Product p where p.name = :name", getType())
-                    .setParameter("name", name)
+                    .createQuery("from Product where name like :phrase or description like :phrase", Product.class)
+                    .setParameter("phrase", "%" + phrase + "%")
                     .getResultList();
             session.getTransaction().commit();
             return products;

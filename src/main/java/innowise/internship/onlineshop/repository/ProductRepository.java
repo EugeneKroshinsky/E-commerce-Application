@@ -6,5 +6,5 @@ import innowise.internship.onlineshop.repository.base.BaseRepository;
 import java.util.List;
 
 public interface ProductRepository extends BaseRepository<Product> {
-    List<Product> getByName(String name);
+    List<Product> search(String phrase);
 }

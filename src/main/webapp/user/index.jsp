@@ -7,7 +7,7 @@
 </head>
 <body>
     <jsp:include page="header.jsp" />
-    <form action="/search" method="get">
+    <form action="${pageContext.request.contextPath}/search" method="get">
         <label for="search">Search:</label>
         <input type="text" id="search" name="search" value="${param.search}" placeholder="Enter productEntity name">
         <button type="submit">Search</button>
