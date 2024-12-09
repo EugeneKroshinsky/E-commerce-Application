@@ -17,8 +17,7 @@
         <p><b>Price: </b>${item.product.price}</p>
         <p><b>Quantity: </b>${item.quantity}</p>
         <p><b>Total price: </b>${item.quantity * item.product.price}</p>
-        <form action="${pageContext.request.contextPath}/cart" method="POST">
-            <input type="hidden" name="action" value="delete">
+        <form action="${pageContext.request.contextPath}/cart/delete" method="POST">
             <input type="hidden" name="productId" value="${item.product.id}">
             <button type="submit">Delete</button>
         </form>

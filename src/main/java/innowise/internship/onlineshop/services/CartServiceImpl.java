@@ -30,10 +30,11 @@ public class CartServiceImpl implements CartService{
         cart.add(item);
     }
 
-    public void removeFromCart(HttpServletRequest request, Long orderItemId) {
+    public void removeFromCart(HttpServletRequest request) {
+        Long productId = Long.parseLong(request.getParameter("productId"));
         HttpSession session = request.getSession();
         List<OrderItemDto> cart = getCart(request);
-        cart.removeIf(item -> item.getProduct().getId().equals(orderItemId));
+        cart.removeIf(item -> item.getProduct().getId().equals(productId));
         if(cart.isEmpty()) {
             session.removeAttribute("cart");
         }

@@ -55,8 +55,7 @@
         <p>Price: ${product.price}</p>
         <p>Quantity: ${product.quantity}</p>
         <p>Category: ${product.category.name}</p>
-        <form action="${pageContext.request.contextPath}/cart" method="POST">
-            <input type="hidden" name="action" value="add">
+        <form action="${pageContext.request.contextPath}/cart/add" method="POST">
             <input type="hidden" name="productId" value="${product.id}">
             <label>Quantity:</label>
             <input type="number" name="quantity" min="1" value="1">

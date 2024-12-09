@@ -12,11 +12,10 @@
     <p><b>Description:</b> ${product.description}</p>
     <p><b>Price:</b> ${product.price}</p>
     <p><b>Quantity:</b> ${product.quantity}</p>
-    <p><b>Category:</b> ${product.category}</p>
+    <p><b>Category:</b> ${product.category.name}</p>
     <p><b>Image:</b> <img src="${product.imageUrl}" alt="${product.name}" /></p>
 
-    <form action="${pageContext.request.contextPath}/cart" method="POST">
-        <input type="hidden" name="action" value="add">
+    <form action="${pageContext.request.contextPath}/cart/add" method="POST">
         <input type="hidden" name="productId" value="${product.id}">
         <label>Quantity:</label>
         <input type="number" name="quantity" min="1" value="1">
