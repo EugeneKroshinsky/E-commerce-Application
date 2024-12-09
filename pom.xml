@@ -86,7 +86,7 @@
             <artifactId>weld-servlet-shaded</artifactId>
             <version>6.0.0.CR2</version>
         </dependency>
-        <!--зависимости для Dozer-->
+        <!--маппинг dto-->
         <dependency>
             <groupId>net.sf.dozer</groupId>
             <artifactId>dozer</artifactId>

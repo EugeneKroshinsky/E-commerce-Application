@@ -1,4 +1,4 @@
-package innowise.internship.onlineshop.mapper;
+package innowise.internship.onlineshop.mappers;
 
 import innowise.internship.onlineshop.dto.CategoryDto;
 import innowise.internship.onlineshop.dto.ProductDto;
@@ -18,8 +18,7 @@ public class ProductMapper {
         try {
             ProductDto productDto = new ProductDto();
             BeanUtils.populate(productDto, request.getParameterMap());
-            Long id = Long.parseLong(request.getParameter("categoryId"));
-            productDto.setCategory(entityManager.getReference(CategoryDto.class, id));
+            productDto.setCategory(entityManager.getReference(CategoryDto.class, productDto.getCategoryId()));
             return productDto;
         } catch (IllegalAccessException | InvocationTargetException e) {
             throw new RuntimeException(e);

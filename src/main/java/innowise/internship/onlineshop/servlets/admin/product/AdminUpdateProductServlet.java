@@ -1,6 +1,6 @@
 package innowise.internship.onlineshop.servlets.admin.product;
 
-import innowise.internship.onlineshop.mapper.ProductMapper;
+import innowise.internship.onlineshop.mappers.ProductMapper;
 import innowise.internship.onlineshop.services.CategoryService;
 import innowise.internship.onlineshop.services.ProductService;
 import innowise.internship.onlineshop.utils.ParsePathUtil;

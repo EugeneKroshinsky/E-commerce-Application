@@ -6,12 +6,10 @@ import innowise.internship.onlineshop.repository.ProductRepository;
 import innowise.internship.onlineshop.services.base.BaseServiceImpl;
 import jakarta.inject.Inject;
 
-
 public class ProductServiceImpl
         extends BaseServiceImpl<ProductDto, ProductDto, ProductDto, Product> implements ProductService {
-
     @Inject
-    public ProductServiceImpl(ProductRepository repository) {
-        super(ProductDto.class, repository);
+    public ProductServiceImpl(ProductRepository productRepository) {
+        super(ProductDto.class, productRepository);
     }
 }

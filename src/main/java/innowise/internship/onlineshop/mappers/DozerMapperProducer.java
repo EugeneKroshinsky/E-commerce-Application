@@ -1,4 +1,4 @@
-package innowise.internship.onlineshop.mapper;
+package innowise.internship.onlineshop.mappers;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.enterprise.inject.Produces;

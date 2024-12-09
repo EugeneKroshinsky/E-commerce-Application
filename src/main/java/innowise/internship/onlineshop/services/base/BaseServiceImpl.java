@@ -1,23 +1,28 @@
 package innowise.internship.onlineshop.services.base;
 
 import innowise.internship.onlineshop.repository.base.BaseRepository;
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import lombok.Getter;
 import org.dozer.DozerBeanMapper;
 
 import java.util.List;
 
+
 public abstract class BaseServiceImpl<TDto, TCreationDto, TUpdateDto, TEntity>
         implements BaseService<TDto, TCreationDto, TUpdateDto>{
+
     private Class<TDto> dtoType;
+    private BaseRepository<TEntity> repository;
+    @Inject
+    @Getter
+    private DozerBeanMapper mapper;
+
 
     public BaseServiceImpl(Class<TDto> dtoType, BaseRepository<TEntity> repository) {
         this.dtoType = dtoType;
         this.repository = repository;
     }
-
-    protected BaseRepository<TEntity> repository;
-    @Inject
-    private DozerBeanMapper mapper;
 
     @Override
     public void save(TCreationDto creationDto) {
