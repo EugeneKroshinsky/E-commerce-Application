@@ -1,4 +1,4 @@
-package innowise.internship.onlineshop.mapper;
+package innowise.internship.onlineshop.mappers;
 
 import innowise.internship.onlineshop.dto.OrderItemDto;
 import innowise.internship.onlineshop.services.ProductService;
@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.beanutils.BeanUtils;
 
 import java.lang.reflect.InvocationTargetException;
+
 
 @ApplicationScoped
 public class OrderItemMapper {

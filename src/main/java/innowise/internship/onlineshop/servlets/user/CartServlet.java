@@ -1,6 +1,6 @@
 package innowise.internship.onlineshop.servlets.user;
 
-import innowise.internship.onlineshop.mapper.OrderItemMapper;
+import innowise.internship.onlineshop.mappers.OrderItemMapper;
 import innowise.internship.onlineshop.services.CartService;
 import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;

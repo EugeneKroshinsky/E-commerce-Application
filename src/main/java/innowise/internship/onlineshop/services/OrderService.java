@@ -1,10 +1,7 @@
 package innowise.internship.onlineshop.services;
 
 import innowise.internship.onlineshop.dto.OrderDto;
+import innowise.internship.onlineshop.services.base.BaseService;
 
-import java.util.List;
-
-public interface OrderService {
-    void save(OrderDto order);
-    List<OrderDto> getAll();
+public interface OrderService extends BaseService<OrderDto, OrderDto, OrderDto> {
 }

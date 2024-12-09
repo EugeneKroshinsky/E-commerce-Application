@@ -42,7 +42,6 @@ public class Product {
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
-
     @ManyToMany(mappedBy = "products")
     private List<Cart> cart;
 
