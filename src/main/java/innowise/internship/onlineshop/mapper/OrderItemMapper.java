@@ -1,15 +1,15 @@
 package innowise.internship.onlineshop.mapper;
 
 import innowise.internship.onlineshop.dto.OrderItemDto;
-import innowise.internship.onlineshop.dto.ProductDto;
 import innowise.internship.onlineshop.services.ProductService;
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.beanutils.BeanUtils;
 
 import java.lang.reflect.InvocationTargetException;
 
-
+@ApplicationScoped
 public class OrderItemMapper {
     @Inject
     private ProductService productService;

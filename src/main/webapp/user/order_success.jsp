@@ -26,7 +26,8 @@
         <hr>
     </c:forEach>
 
-<p><b>Total Price:</b> ${orderEntity.items.stream().map(item -> item.productEntity.price * item.quantity).sum()}</p>
+<p><b>Total Price:</b> ${order.orderItems.stream().map(item -> item.product.price * item.quantity).sum()}</p>
+<br>
 <a href="${pageContext.request.contextPath}/mainPage">Return to Product List</a>
 <jsp:include page="footer.html" />
 </body>

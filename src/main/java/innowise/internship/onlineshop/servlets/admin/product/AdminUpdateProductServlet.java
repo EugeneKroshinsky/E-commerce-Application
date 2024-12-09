@@ -1,6 +1,5 @@
 package innowise.internship.onlineshop.servlets.admin.product;
 
-import innowise.internship.onlineshop.dto.ProductDto;
 import innowise.internship.onlineshop.mapper.ProductMapper;
 import innowise.internship.onlineshop.services.CategoryService;
 import innowise.internship.onlineshop.services.ProductService;
@@ -11,13 +10,9 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import lombok.NoArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 
-@Slf4j
-@NoArgsConstructor
 @WebServlet(value = "/admin/update/product/*")
 public class AdminUpdateProductServlet extends HttpServlet {
     @Inject

@@ -14,7 +14,7 @@ public class FileServiceImpl implements FileService {
     private final static String UPLOAD_DIR = "uploads/";
     @Override
     public String uploadFile(HttpServletRequest request) {
-        String uploadDir = null;
+        /*String uploadDir = null;
         try {
             request.getParameter("id");
             Part filePart = request.getPart("file");
@@ -25,7 +25,8 @@ public class FileServiceImpl implements FileService {
             throw new RuntimeException("Ошибка при загрузке файла: " + e.getMessage(), e);
         }
 
-        return uploadDir;
+        return uploadDir;*/
+        throw new UnsupportedOperationException("Not implemented yet");
     }
 
 }

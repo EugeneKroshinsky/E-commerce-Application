@@ -29,7 +29,7 @@
             <td>${order.email}</td>
             <td>${order.phone}</td>
             <td>${order.address}</td>
-            <td>${order.orderItems.stream().map(ct -> ct.product.price * ct.quantity).sum()}</td>
+            <td>${order.orderItems.stream().map(item -> item.product.price * item.quantity).sum()}</td>
     </c:forEach>
     </tbody>
 </table>

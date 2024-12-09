@@ -7,11 +7,9 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import lombok.NoArgsConstructor;
 
 import java.io.IOException;
 
-@NoArgsConstructor
 @WebServlet(value = "/admin/order")
 public class AdminOrderServlet extends HttpServlet {
     @Inject

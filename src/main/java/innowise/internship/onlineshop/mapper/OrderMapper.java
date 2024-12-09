@@ -2,13 +2,14 @@ package innowise.internship.onlineshop.mapper;
 
 import innowise.internship.onlineshop.dto.OrderItemDto;
 import innowise.internship.onlineshop.dto.OrderDto;
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
 import org.apache.commons.beanutils.BeanUtils;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
+@ApplicationScoped
 public class OrderMapper {
     public OrderDto toDto(HttpServletRequest request) {
         try {
