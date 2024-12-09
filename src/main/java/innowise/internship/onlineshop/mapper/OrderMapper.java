@@ -4,26 +4,22 @@ import innowise.internship.onlineshop.dto.OrderItemDto;
 import innowise.internship.onlineshop.dto.OrderDto;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import org.apache.commons.beanutils.BeanUtils;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 public class OrderMapper {
     public static OrderDto toDto(HttpServletRequest request) {
-        HttpSession session = request.getSession();
-        OrderDto orderDto = new OrderDto();
-        orderDto.setUser(null);
-        List<OrderItemDto> cart = (List<OrderItemDto>) session.getAttribute("cart");
-        orderDto.setAddress(request.getParameter("address"));
-        orderDto.setComment(request.getParameter("comment"));
-        orderDto.setFirstName(request.getParameter("firstName"));
-        orderDto.setLastName(request.getParameter("lastName"));
-        orderDto.setEmail(request.getParameter("email"));
-        orderDto.setPhone(request.getParameter("phone"));
-        orderDto.setStatus("In process");
-        orderDto.setTotalPrice(cart.stream()
-                .map(ct -> ct.getProduct().getPrice() * ct.getQuantity())
-                .mapToDouble(el-> el).sum());
-        orderDto.setOrderItems(cart);
-        return orderDto;
+        try {
+            OrderDto orderDto = new OrderDto();
+            BeanUtils.populate(orderDto, request.getParameterMap());
+            List<OrderItemDto> cart = (List<OrderItemDto>) request.getSession().getAttribute("cart");
+            orderDto.setOrderItems(cart);
+            orderDto.setStatus("In process"); // возможно можно использовать аннотацию для генерации дефолтного значения
+            return orderDto;
+        } catch (IllegalAccessException | InvocationTargetException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

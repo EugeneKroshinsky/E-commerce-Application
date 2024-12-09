@@ -2,12 +2,27 @@ package innowise.internship.onlineshop.mapper;
 
 import innowise.internship.onlineshop.dto.OrderItemDto;
 import innowise.internship.onlineshop.dto.ProductDto;
+import innowise.internship.onlineshop.services.ProductService;
+import jakarta.inject.Inject;
 import jakarta.servlet.http.HttpServletRequest;
+import org.apache.commons.beanutils.BeanUtils;
+
+import java.lang.reflect.InvocationTargetException;
+
 
 public class OrderItemMapper {
-    public static OrderItemDto toDto(HttpServletRequest request, ProductDto productDto) {
-        String quantityParam = request.getParameter("quantity");
-        int quantity =  quantityParam != null ? Integer.parseInt(quantityParam) : 0;
-        return new OrderItemDto(quantity, productDto);
+    @Inject
+    private ProductService productService;
+
+    public OrderItemDto toDto(HttpServletRequest request)  {
+        try {
+            OrderItemDto orderItemDto = new OrderItemDto();
+            BeanUtils.populate(orderItemDto, request.getParameterMap());
+            Long productId = Long.parseLong(request.getParameter("productId"));
+            orderItemDto.setProduct(productService.getById(productId));
+            return orderItemDto;
+        } catch (IllegalAccessException | InvocationTargetException | NumberFormatException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

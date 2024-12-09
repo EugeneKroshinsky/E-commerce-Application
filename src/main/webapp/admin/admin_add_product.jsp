@@ -8,7 +8,7 @@
 <a href="javascript:history.back()">Back</a>
 <h1>Create New Product</h1>
 
-<form action="${pageContext.request.contextPath}/admin/add/product" method="post" >
+<form action="${pageContext.request.contextPath}/admin/add/product" method="post" enctype="multipart/form-data">
     <label for="name">Product Name:</label>
     <input type="text" id="name" name="name" required>
     <br><br>
@@ -32,10 +32,10 @@
             <option value="${category.id}">${category.name}</option>
         </c:forEach>
     </select>
-    <br><br>
-
-
-
+    <br>
+    <label for="fileInput">Загрузите файл:</label>
+    <input type="file" id="fileInput" name="file">
+    <br>
     <button type="submit">Create Product</button>
 </form>
 </body>

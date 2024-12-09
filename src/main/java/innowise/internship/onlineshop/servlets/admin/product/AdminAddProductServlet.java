@@ -4,6 +4,7 @@ import innowise.internship.onlineshop.dto.ProductDto;
 import innowise.internship.onlineshop.dto.ProductEditDto;
 import innowise.internship.onlineshop.mapper.AdminProductMapper;
 import innowise.internship.onlineshop.services.CategoryService;
+import innowise.internship.onlineshop.services.FileService;
 import innowise.internship.onlineshop.services.ProductService;
 import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;

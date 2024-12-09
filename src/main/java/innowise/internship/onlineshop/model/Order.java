@@ -33,10 +33,6 @@ public class Order {
     @Column(name = "email", nullable = false)
     private String email;
 
-
-    @Column(name = "total_price", nullable = false)
-    private Double totalPrice;
-
     @Column(nullable = false)
     private String address;
 

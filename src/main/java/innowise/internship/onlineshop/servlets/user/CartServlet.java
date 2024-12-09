@@ -1,6 +1,5 @@
 package innowise.internship.onlineshop.servlets.user;
 
-import innowise.internship.onlineshop.dto.OrderItemDto;
 import innowise.internship.onlineshop.mapper.OrderItemMapper;
 import innowise.internship.onlineshop.services.CartService;
 import innowise.internship.onlineshop.services.ProductService;
@@ -11,17 +10,21 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import lombok.NoArgsConstructor;
+import org.eclipse.tags.shaded.org.apache.xpath.operations.Or;
+
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 
-@NoArgsConstructor
+
 @WebServlet(value = "/cart")
 public class CartServlet extends HttpServlet {
     @Inject
     private CartService cartService;
     @Inject
     private ProductService productService;
+    @Inject
+    private OrderItemMapper orderItemMapper;
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -32,16 +35,14 @@ public class CartServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         HttpSession session = request.getSession();
-        Long productId = Long.parseLong(request.getParameter("productId"));
-        OrderItemDto orderItemDto = OrderItemMapper.toDto(request, productService.getById(productId));
-
         String action = request.getParameter("action");
         if ("add".equals(action)) {
-            cartService.addToCart(session, orderItemDto);
+            cartService.addToCart(session, orderItemMapper.toDto(request));
         } else if ("delete".equals(action)) {
-            cartService.removeFromCart(session, orderItemDto);
+            Long productId = Long.parseLong(request.getParameter("productId"));
+            cartService.removeFromCart(session, productId);
         }
-
         response.sendRedirect(request.getContextPath() + "/cart");
     }
+
 }

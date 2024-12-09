@@ -8,5 +8,5 @@ import java.util.List;
 public interface CartService {
     List<OrderItemDto> getCart(HttpSession session);
     void addToCart(HttpSession session, OrderItemDto item);
-    void removeFromCart(HttpSession session, OrderItemDto orderItem);
+    void removeFromCart(HttpSession session, Long orderItemId);
 }

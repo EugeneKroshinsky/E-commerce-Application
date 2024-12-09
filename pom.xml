@@ -92,6 +92,13 @@
             <artifactId>dozer</artifactId>
             <version>5.5.1</version>
         </dependency>
+        <!--маппинг html-->
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>1.9.4</version>
+        </dependency>
+
     </dependencies>
 
     <build>

@@ -22,6 +22,7 @@ public class OrderServlet extends HttpServlet {
     @Inject
     private OrderService orderService;
 
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
