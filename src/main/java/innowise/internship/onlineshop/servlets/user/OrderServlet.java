@@ -21,8 +21,8 @@ import java.io.IOException;
 public class OrderServlet extends HttpServlet {
     @Inject
     private OrderService orderService;
-
-
+    @Inject
+    private OrderMapper orderMapper;
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -32,7 +32,7 @@ public class OrderServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
-        OrderDto orderDto = OrderMapper.toDto(request);
+        OrderDto orderDto = orderMapper.toDto(request);
         orderService.save(orderDto);
         session.removeAttribute("cart");
         request.setAttribute("order", orderDto);

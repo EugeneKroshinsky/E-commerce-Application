@@ -10,7 +10,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 public class OrderMapper {
-    public static OrderDto toDto(HttpServletRequest request) {
+    public OrderDto toDto(HttpServletRequest request) {
         try {
             OrderDto orderDto = new OrderDto();
             BeanUtils.populate(orderDto, request.getParameterMap());
