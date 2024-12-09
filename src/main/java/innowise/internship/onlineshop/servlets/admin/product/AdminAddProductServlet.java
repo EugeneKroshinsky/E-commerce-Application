@@ -1,10 +1,8 @@
 package innowise.internship.onlineshop.servlets.admin.product;
 
 import innowise.internship.onlineshop.dto.ProductDto;
-import innowise.internship.onlineshop.dto.ProductEditDto;
-import innowise.internship.onlineshop.mapper.AdminProductMapper;
+import innowise.internship.onlineshop.mapper.ProductMapper;
 import innowise.internship.onlineshop.services.CategoryService;
-import innowise.internship.onlineshop.services.FileService;
 import innowise.internship.onlineshop.services.ProductService;
 import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
@@ -36,8 +34,8 @@ public class AdminAddProductServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
-        ProductEditDto productEditDto = AdminProductMapper.toEditDto(request);
-        productService.save(productEditDto);
+        ProductDto productDto = ProductMapper.toDto(request);
+        productService.save(productDto);
         response.sendRedirect(request.getContextPath() + "/admin/product");
     }
 }
