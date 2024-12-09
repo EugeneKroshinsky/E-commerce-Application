@@ -11,8 +11,7 @@ public class DozerMapperProducer {
     @ApplicationScoped
     public DozerBeanMapper createMapper() {
         DozerBeanMapper mapper = new DozerBeanMapper();
-        // Optional: Add custom mapping configurations if needed
-        // mapper.setMappingFiles(List.of("dozer-mapping.xml"));
+        //custom mapping: mapper.setMappingFiles(List.of("dozer-mapping.xml"));
         return mapper;
     }
 }

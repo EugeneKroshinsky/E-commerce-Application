@@ -19,8 +19,7 @@ public class OrderItemMapper {
         try {
             OrderItemDto orderItemDto = new OrderItemDto();
             BeanUtils.populate(orderItemDto, request.getParameterMap());
-            Long productId = Long.parseLong(request.getParameter("productId"));
-            orderItemDto.setProduct(productService.getById(productId));
+            orderItemDto.setProduct(productService.getById(orderItemDto.getProductId()));
             return orderItemDto;
         } catch (IllegalAccessException | InvocationTargetException | NumberFormatException e) {
             throw new RuntimeException(e);
