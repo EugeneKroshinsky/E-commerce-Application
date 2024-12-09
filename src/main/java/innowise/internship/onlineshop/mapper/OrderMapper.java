@@ -14,8 +14,7 @@ public class OrderMapper {
         try {
             OrderDto orderDto = new OrderDto();
             BeanUtils.populate(orderDto, request.getParameterMap());
-            List<OrderItemDto> cart = (List<OrderItemDto>) request.getSession().getAttribute("cart");
-            orderDto.setOrderItems(cart);
+            orderDto.setOrderItems((List<OrderItemDto>) request.getSession().getAttribute("cart"));
             orderDto.setStatus("In process"); // возможно можно использовать аннотацию для генерации дефолтного значения
             return orderDto;
         } catch (IllegalAccessException | InvocationTargetException e) {

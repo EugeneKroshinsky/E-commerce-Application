@@ -2,25 +2,25 @@ package innowise.internship.onlineshop.mapper;
 
 import innowise.internship.onlineshop.dto.CategoryDto;
 import innowise.internship.onlineshop.dto.ProductDto;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.beanutils.BeanUtils;
 
 import java.lang.reflect.InvocationTargetException;
 
 public class ProductMapper {
-    public static ProductDto toDto(HttpServletRequest request) {
+    @PersistenceContext
+    private  EntityManager entityManager;
+    public ProductDto toDto(HttpServletRequest request) {
         try {
             ProductDto productDto = new ProductDto();
             BeanUtils.populate(productDto, request.getParameterMap());
-            productDto.setCategory(createCategoryDto(request));
+            Long id = Long.parseLong(request.getParameter("categoryId"));
+            productDto.setCategory(entityManager.getReference(CategoryDto.class, id));
             return productDto;
         } catch (IllegalAccessException | InvocationTargetException e) {
             throw new RuntimeException(e);
         }
-    }
-    private static CategoryDto createCategoryDto(HttpServletRequest request) {
-        CategoryDto categoryDto = new CategoryDto();
-        categoryDto.setId(Long.parseLong(request.getParameter("categoryId")));
-        return categoryDto;
     }
 }

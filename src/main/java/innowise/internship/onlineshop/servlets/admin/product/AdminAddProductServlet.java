@@ -23,6 +23,8 @@ public class AdminAddProductServlet extends HttpServlet {
     private ProductService productService;
     @Inject
     private CategoryService categoryService;
+    @Inject
+    private ProductMapper productMapper;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -34,7 +36,7 @@ public class AdminAddProductServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
-        ProductDto productDto = ProductMapper.toDto(request);
+        ProductDto productDto = productMapper.toDto(request);
         productService.save(productDto);
         response.sendRedirect(request.getContextPath() + "/admin/product");
     }
