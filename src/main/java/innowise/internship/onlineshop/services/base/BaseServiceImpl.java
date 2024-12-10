@@ -1,17 +1,13 @@
 package innowise.internship.onlineshop.services.base;
 
 import innowise.internship.onlineshop.repository.base.BaseRepository;
-import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import lombok.Getter;
-import lombok.extern.slf4j.Slf4j;
 import org.dozer.DozerBeanMapper;
 
 import java.util.List;
-import java.util.UUID;
 
 
-@Slf4j
 public abstract class BaseServiceImpl<TDto, TCreationDto, TUpdateDto, TEntity>
         implements BaseService<TDto, TCreationDto, TUpdateDto>{
 

@@ -30,12 +30,12 @@ public class ProductRepositoryImpl extends BaseRepositoryImpl<Product> implement
         try (Session session = getSessionFactory().getCurrentSession()) {
             session.beginTransaction();
             for (OrderItem item : orderItems) {
-                Product product = session.get(Product.class, item.getId());
+                Product product = session.get(Product.class, item.getProduct().getId());
                 if (product == null) {
                     throw new IllegalArgumentException("Product with ID " + item.getId() + " not found.");
                 }
                 if (product.getQuantity() < item.getQuantity()) {
-                    throw new IllegalStateException("Not enough quantity available for product with ID " + item.getId());
+                    throw new IllegalStateException("Not enough quantity available for product with ID " + product.getId());
                 }
                 product.setQuantity(product.getQuantity() - item.getQuantity());
             }

@@ -1,7 +1,6 @@
 package innowise.internship.onlineshop.repository.base;
 
 import java.util.List;
-import java.util.UUID;
 
 
 public interface BaseRepository<T>{

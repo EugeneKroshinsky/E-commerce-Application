@@ -4,6 +4,7 @@ import innowise.internship.onlineshop.dto.OrderDto;
 import innowise.internship.onlineshop.mappers.OrderMapper;
 import innowise.internship.onlineshop.services.CartService;
 import innowise.internship.onlineshop.services.OrderService;
+import innowise.internship.onlineshop.services.ProductService;
 import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -23,6 +24,8 @@ public class OrderServlet extends HttpServlet {
     private OrderMapper orderMapper;
     @Inject
     private CartService cartService;
+    @Inject
+    private ProductService productService;
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -33,6 +36,7 @@ public class OrderServlet extends HttpServlet {
             throws ServletException, IOException {
         OrderDto orderDto = orderMapper.toDto(request);
         orderService.save(orderDto);
+        productService.reduceQuantity(orderDto.getOrderItems());
         cartService.removeCart(request);
         request.setAttribute("order", orderDto);
         getServletContext().getRequestDispatcher("/user/order_success.jsp").forward(request, response);
