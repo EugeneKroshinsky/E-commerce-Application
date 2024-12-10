@@ -10,6 +10,9 @@
     <c:if test="${cart.isEmpty()}">
         <p>Cart is empty</p>
     </c:if>
+    <c:if test="${not empty errorMessage}">
+        <div class="error">${errorMessage}</div>
+    </c:if>
     <c:forEach var="item" items="${cart}">
         <hr>
         <p><b>Name: </b>${item.product.name}</p>

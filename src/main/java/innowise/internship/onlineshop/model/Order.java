@@ -5,6 +5,9 @@ import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.StringJoiner;
+import java.util.UUID;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -46,7 +49,7 @@ public class Order {
     private LocalDateTime createdAt;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
-    private List<OrderItem> items;
+    private List<OrderItem> orderItems;
 
     @PrePersist
     private void onCreate() {

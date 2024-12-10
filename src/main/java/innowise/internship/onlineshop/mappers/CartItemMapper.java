@@ -11,7 +11,7 @@ import java.lang.reflect.InvocationTargetException;
 
 
 @ApplicationScoped
-public class OrderItemMapper {
+public class CartItemMapper {
     @Inject
     private ProductService productService;
 

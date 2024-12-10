@@ -1,27 +1,31 @@
-package innowise.internship.onlineshop.model;
+    package innowise.internship.onlineshop.model;
 
-import jakarta.persistence.*;
-import lombok.*;
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@Entity
-@Table(name = "order_items")
-public class OrderItem {
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    import jakarta.persistence.*;
+    import lombok.*;
 
-    @ManyToOne
-    @JoinColumn(name = "order_id", nullable = false)
-    private Order order;
+    import java.util.StringJoiner;
+    import java.util.UUID;
 
-    @ManyToOne
-    @JoinColumn(name = "product_id", nullable = false)
-    private Product product;
+    @Getter
+    @Setter
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @Entity
+    @Table(name = "order_items")
+    public class OrderItem {
+        @Id
+        @Column(name = "id")
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private Long id;
 
-    @Column(nullable = false)
-    private int quantity;
-}
+        @ManyToOne
+        @JoinColumn(name = "order_id", nullable = false)
+        private Order order;
+
+        @ManyToOne
+        @JoinColumn(name = "product_id", nullable = false)
+        private Product product;
+
+        @Column(nullable = false)
+        private int quantity;
+    }

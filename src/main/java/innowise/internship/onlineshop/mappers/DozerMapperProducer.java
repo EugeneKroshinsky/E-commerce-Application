@@ -4,6 +4,8 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.enterprise.inject.Produces;
 import org.dozer.DozerBeanMapper;
 
+import java.util.List;
+
 @ApplicationScoped
 public class DozerMapperProducer {
 
@@ -11,7 +13,7 @@ public class DozerMapperProducer {
     @ApplicationScoped
     public DozerBeanMapper createMapper() {
         DozerBeanMapper mapper = new DozerBeanMapper();
-        //custom mapping: mapper.setMappingFiles(List.of("dozer-mapping.xml"));
+        mapper.setMappingFiles(List.of("dozer_custom_convertor.xml"));
         return mapper;
     }
 }

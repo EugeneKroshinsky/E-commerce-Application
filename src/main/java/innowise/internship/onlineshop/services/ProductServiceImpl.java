@@ -1,6 +1,8 @@
 package innowise.internship.onlineshop.services;
 
+import innowise.internship.onlineshop.dto.OrderItemDto;
 import innowise.internship.onlineshop.dto.ProductDto;
+import innowise.internship.onlineshop.model.OrderItem;
 import innowise.internship.onlineshop.model.Product;
 import innowise.internship.onlineshop.repository.ProductRepository;
 import innowise.internship.onlineshop.services.base.BaseServiceImpl;
@@ -22,5 +24,14 @@ public class ProductServiceImpl
     public List<ProductDto> search(String phrase) {
         return productRepository.search(phrase).stream()
                 .map(entity -> getMapper().map(entity, ProductDto.class)).toList();
+    }
+
+    @Override
+    public void reduceQuantity(List<OrderItemDto> orderItems) {
+        productRepository.reduceQuantity(
+                orderItems.stream()
+                .map(orderItemDto -> getMapper().map(orderItemDto, OrderItem.class))
+                .toList()
+        );
     }
 }

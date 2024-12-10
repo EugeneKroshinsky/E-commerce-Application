@@ -13,7 +13,7 @@ import java.lang.reflect.InvocationTargetException;
 @ApplicationScoped
 public class ProductMapper {
     @PersistenceContext
-    private  EntityManager entityManager;
+    private EntityManager entityManager;
     public ProductDto toDto(HttpServletRequest request) {
         try {
             ProductDto productDto = new ProductDto();

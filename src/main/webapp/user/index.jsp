@@ -58,7 +58,7 @@
         <form action="${pageContext.request.contextPath}/cart/add" method="POST">
             <input type="hidden" name="productId" value="${product.id}">
             <label>Quantity:</label>
-            <input type="number" name="quantity" min="1" value="1">
+            <input type="number" name="quantity" min="1" max="${product.quantity}" value="1">
             <button type="submit">Add to Cart</button>
         </form>
     </c:forEach>

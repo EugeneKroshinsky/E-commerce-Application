@@ -25,7 +25,7 @@ public class AdminUpdateProductServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Long id = ParsePathUtil.parsePath(request);
+        Long id = ParsePathUtil.parsePathLong(request);
         request.setAttribute("product", productService.getById(id));
         request.setAttribute("categories", categoryService.getAll());
         getServletContext().getRequestDispatcher("/admin/admin_update_product.jsp").forward(request, response);

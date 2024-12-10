@@ -7,9 +7,11 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 
+@Slf4j
 @WebServlet(value = "/admin/order")
 public class AdminOrderServlet extends HttpServlet {
     @Inject
@@ -18,6 +20,7 @@ public class AdminOrderServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request,
                          HttpServletResponse response) throws ServletException, IOException {
+        log.info("Order dto {}", orderService.getAll());
         request.setAttribute("orders", orderService.getAll());
         request.getRequestDispatcher("/admin/admin_orders.jsp").forward(request, response);
     }
