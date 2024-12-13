@@ -4,7 +4,10 @@
 
 [Макет базы данных](https://github.com/EugeneKroshinsky/E-commerce-Application/blob/main/database_model.png)
 
-Стек технолигий: Java EE, Tomcat, JSP, PostgreSQL
+Развертывание через Docker прка отсутствует. На всякий случай созам папку со скриншотами.
+
+
+Стек технолигий: Java EE, Tomcat, JSP, PostgreSQL, Hibernate, Lombok, Logback, Dozer (mapping), Weld (DI)
 
 # План разработки интернет-магазина
 
