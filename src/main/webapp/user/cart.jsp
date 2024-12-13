@@ -17,7 +17,15 @@
 <div class="main-container">
     <c:if test="${cart.isEmpty()}">
         <div class="empty-cart-message">
+            <br>
+            <br>
+            <br>
+            <br>
             <p>Your cart is empty</p>
+            <br>
+            <br>
+            <br>
+            <br>
         </div>
     </c:if>
 

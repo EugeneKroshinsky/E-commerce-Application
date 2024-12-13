@@ -11,12 +11,18 @@
 </div>
 
 <div class="contact-container">
+    <br>
     <h1 class="page-title">Contact Us</h1>
+    <br>
     <div class="contact-info">
         <p><strong>Phone:</strong> +375 29 111 11 11</p>
         <p><strong>Email:</strong> OnlineShop@gmail.com</p>
         <p><strong>Address:</strong> pr. Nezavisimosti, 4</p>
         <p><strong>Working hours:</strong> 9:00 - 21:00</p>
+        <br>
+        <br>
+        <br>
+        <br>
     </div>
 </div>
 

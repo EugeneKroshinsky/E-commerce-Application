@@ -20,8 +20,11 @@ public class ProductRepositoryImpl extends BaseRepositoryImpl<Product> implement
         try (Session session = getSessionFactory().getCurrentSession()) {
             session.beginTransaction();
             List<Product> products = session
-                    .createQuery("from Product where name like :phrase or description like :phrase", Product.class)
-                    .setParameter("phrase", "%" + phrase + "%")
+                    .createQuery(
+                            "from Product where lower(name) like :phrase or lower(description) like :phrase",
+                            Product.class
+                    )
+                    .setParameter("phrase", "%" + phrase.toLowerCase() + "%")
                     .getResultList();
             session.getTransaction().commit();
             return products;
