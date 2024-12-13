@@ -1,6 +1,6 @@
 package innowise.internship.onlineshop.mappers;
 
-import innowise.internship.onlineshop.dto.FilterDto;
+import innowise.internship.onlineshop.model.ProductFilter;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.beanutils.BeanUtils;
@@ -8,15 +8,15 @@ import org.apache.commons.beanutils.BeanUtils;
 import java.lang.reflect.InvocationTargetException;
 
 @ApplicationScoped
-public class FilterMapper {
-    public FilterDto toDto(HttpServletRequest request) {
+public class ProductFilterMapper {
+    public ProductFilter toDto(HttpServletRequest request) {
         try {
-            FilterDto filterDto = new FilterDto();
-            BeanUtils.populate(filterDto, request.getParameterMap());
-            if (filterDto.getMaxPrice() == 0) {
-                filterDto.setMaxPrice(100000);
+            ProductFilter productFilter = new ProductFilter();
+            BeanUtils.populate(productFilter, request.getParameterMap());
+            if (productFilter.getMaxPrice() == 0) {
+                productFilter.setMaxPrice(100000);
             }
-            return filterDto;
+            return productFilter;
         } catch (IllegalAccessException | InvocationTargetException e) {
             throw new RuntimeException(e);
         }

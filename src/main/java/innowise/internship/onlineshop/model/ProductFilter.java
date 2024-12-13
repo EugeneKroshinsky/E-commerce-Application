@@ -1,4 +1,4 @@
-package innowise.internship.onlineshop.dto;
+package innowise.internship.onlineshop.model;
 import lombok.*;
 
 @ToString
@@ -7,7 +7,7 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class FilterDto {
+public class ProductFilter {
     private String categoryFilter;
     private double minPrice;
     private double maxPrice;

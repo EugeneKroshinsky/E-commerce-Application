@@ -1,8 +1,8 @@
 package innowise.internship.onlineshop.servlets.user;
 
-import innowise.internship.onlineshop.dto.FilterDto;
+import innowise.internship.onlineshop.model.ProductFilter;
 import innowise.internship.onlineshop.dto.ProductDto;
-import innowise.internship.onlineshop.mappers.FilterMapper;
+import innowise.internship.onlineshop.mappers.ProductFilterMapper;
 import innowise.internship.onlineshop.services.CategoryService;
 import innowise.internship.onlineshop.services.ProductService;
 import jakarta.inject.Inject;
@@ -20,16 +20,16 @@ public class FilterServlet extends HttpServlet {
     @Inject
     private ProductService productService;
     @Inject
-    private FilterMapper filterMapper;
+    private ProductFilterMapper productFilterMapper;
     @Inject
     private CategoryService categoryService;
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        FilterDto filterDto = filterMapper.toDto(request);
-        List<ProductDto> products =  productService.filter(filterDto);
+        ProductFilter productFilter = productFilterMapper.toDto(request);
+        List<ProductDto> products =  productService.filter(productFilter);
         request.setAttribute("products", products);
         request.setAttribute("categories", categoryService.getAll());
-        request.setAttribute("filterDto", filterDto);
+        request.setAttribute("filterDto", productFilter);
         request.getRequestDispatcher("/user/index.jsp").forward(request, response);
     }
 }

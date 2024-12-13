@@ -33,15 +33,7 @@ public class OrderServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         OrderDto orderDto = orderMapper.toDto(request);
-
-        //TODO: это неправильно сохранять и удалять в разных транзакциях, но чтобы красиво реализовать
-        // надо провести небольшой рефакторинг, пока оставлю так
-        //TODO: я бы решил эту проблему, каким-то образом вынеся транзакции из repository,
-        //TODO: в сервисный слой, т.к. по идее в repository нельзя сделать метод который
-        // будет менять две разные сущности (вообще, можно, но с точки зрения архитектуры скорее всего печально)
         orderService.save(orderDto);
-        productService.reduceQuantity(orderDto.getOrderItems());
-
         cartService.removeCart(request);
         request.setAttribute("order", orderDto);
         getServletContext().getRequestDispatcher("/user/order_success.jsp").forward(request, response);

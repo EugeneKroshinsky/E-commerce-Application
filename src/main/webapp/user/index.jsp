@@ -31,16 +31,16 @@
         <form action="${pageContext.request.contextPath}/filter" method="get">
             <label for="minPrice">Price</label>
             <div class="form-group-inline">
-                <input type="number" id="minPrice" name="minPrice" min="0" value="${filterDto.minPrice}" placeholder="From">
-                <input type="number" id="maxPrice" name="maxPrice" min="0" value="${filterDto.maxPrice}" placeholder="To">
+                <input type="number" id="minPrice" name="minPrice" min="0" value="${productFilter.minPrice}" placeholder="From">
+                <input type="number" id="maxPrice" name="maxPrice" min="0" value="${productFilter.maxPrice}" placeholder="To">
             </div>
 
             <label for="category">Category</label>
             <div class="form-group-inline">
                 <select id="category" name="categoryFilter">
-                    <option value="" <c:if test="${filterDto.categoryFilter == null || filterDto.categoryFilter == ''}">selected</c:if>>All</option>
+                    <option value="" <c:if test="${productFilter.categoryFilter == null || productFilter.categoryFilter == ''}">selected</c:if>>All</option>
                     <c:forEach var="category" items="${categories}">
-                        <option value="${category.name}" <c:if test="${filterDto.categoryFilter == category.name}">selected</c:if>>${category.name}</option>
+                        <option value="${category.name}" <c:if test="${productFilter.categoryFilter == category.name}">selected</c:if>>${category.name}</option>
                     </c:forEach>
                 </select>
             </div>

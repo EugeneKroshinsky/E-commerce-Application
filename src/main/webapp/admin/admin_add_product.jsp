@@ -27,7 +27,7 @@
     <br><br>
 
     <label for="category">Category:</label>
-    <select id="category" name="categoryId">
+    <select id="category" name="categoryId" required>
         <option value="">-- Select a Category --</option>
         <c:forEach var="category" items="${categories}">
             <option value="${category.id}">${category.name}</option>
