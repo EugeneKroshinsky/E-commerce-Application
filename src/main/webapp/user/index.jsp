@@ -13,30 +13,32 @@
         <button type="submit">Search</button>
     </form>
     <hr>
-    <form action="/filter" method="get">
+    <form action="${pageContext.request.contextPath}/filter" method="get">
             <p>Filters:</p>
-            <label for="categoryEntity">Category:</label>
-            <select id="categoryEntity" name="categoryEntity">
-                <option value="">All</option>
-                <c:forEach var="categoryEntity" items="${categories}">
-                    <option value="${categoryEntity.name}"
-                            <c:if test="${param.categoryEntity.name == categoryEntity.name}">selected</c:if>>
-                            ${categoryEntity.name}
+            <label for="category">Category:</label>
+            <select id="category" name="categoryFilter">
+                <option value="" <c:if test="${filterDto.categoryFilter == null || filterDto.categoryFilter == ''}">selected</c:if>>All</option>
+                <c:forEach var="category" items="${categories}">
+                    <option value="${category.name}"
+                            <c:if test="${filterDto.categoryFilter == category.name}">selected</c:if>>
+                            ${category.name}
                     </option>
                 </c:forEach>
             </select>
+
             <br>
             <label for="minPrice">Min Price:</label>
-            <input type="number" id="minPrice" name="minPrice" value="${param.minPrice}" step="10" min="0">
+            <input type="number" id="minPrice" name="minPrice" min="0" value="${filterDto.minPrice}">
             <br>
             <label for="maxPrice">Max Price:</label>
-            <input type="number" id="maxPrice" name="maxPrice" value="${param.maxPrice}" step="10" min="0">
+            <input type="number" id="maxPrice" name="maxPrice" min="0" value="${filterDto.maxPrice}">
             <br>
         <label for="sort">Sort by:</label>
         <select id="sort" name="sort">
             <option value="">Default</option>
             <option value="date" <c:if test="${param.sort == 'date'}">selected</c:if>>Date</option>
-            <option value="price" <c:if test="${param.sort == 'price'}">selected</c:if>>Price</option>
+            <option value="price_asc" <c:if test="${param.sort == 'price_asc'}">selected</c:if>>Price asc</option>
+            <option value="price_desc" <c:if test="${param.sort == 'price_desc'}">selected</c:if>>Price desc</option>
             <option value="name" <c:if test="${param.sort == 'name'}">selected</c:if>>Name</option>
         </select>
         <br>

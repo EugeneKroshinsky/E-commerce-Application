@@ -1,16 +1,18 @@
 package innowise.internship.onlineshop.services.base;
 
 import innowise.internship.onlineshop.repository.base.BaseRepository;
+import innowise.internship.onlineshop.utils.HibernateUtil;
 import jakarta.inject.Inject;
 import lombok.Getter;
 import org.dozer.DozerBeanMapper;
+import org.hibernate.SessionFactory;
 
 import java.util.List;
 
 
 public abstract class BaseServiceImpl<TDto, TCreationDto, TUpdateDto, TEntity>
         implements BaseService<TDto, TCreationDto, TUpdateDto>{
-
+    private final SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
     private Class<TDto> dtoType;
     private BaseRepository<TEntity> repository;
 

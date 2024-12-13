@@ -1,5 +1,6 @@
 package innowise.internship.onlineshop.services;
 
+import innowise.internship.onlineshop.dto.FilterDto;
 import innowise.internship.onlineshop.dto.OrderItemDto;
 import innowise.internship.onlineshop.dto.ProductDto;
 import innowise.internship.onlineshop.model.OrderItem;
@@ -33,5 +34,12 @@ public class ProductServiceImpl
                 .map(orderItemDto -> getMapper().map(orderItemDto, OrderItem.class))
                 .toList()
         );
+    }
+
+    @Override
+    public List<ProductDto> filter(FilterDto filterDto) {
+        return productRepository.filter(filterDto).stream()
+                .map(entity -> getMapper().map(entity, ProductDto.class))
+                .toList();
     }
 }

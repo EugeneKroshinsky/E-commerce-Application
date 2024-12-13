@@ -31,9 +31,8 @@ public abstract class BaseRepositoryImpl<T> implements BaseRepository<T> {
         try (Session session = sessionFactory.getCurrentSession()) {
             session.beginTransaction();
             List<T> objects = session
-                    .createQuery("select o from " + type.getSimpleName() + " o", type)
+                    .createQuery("from " + type.getSimpleName(), type)
                     .getResultList();
-            session.getTransaction().commit();
             return objects;
         }
     }
@@ -44,7 +43,6 @@ public abstract class BaseRepositoryImpl<T> implements BaseRepository<T> {
             //БЕЗ ТРАНЗАКЦИИ НЕ РАБОТАЕТ
             session.beginTransaction();
             T object = session.get(type, id);
-            session.getTransaction().commit();
             return object;
         }
     }
