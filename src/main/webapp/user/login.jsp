@@ -1,22 +1,40 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<html lang="en">
 <head>
-    <title>Title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/style_login.css">
 </head>
 <body>
-    <jsp:include page="header.jsp" />
-    <h1>СКОРО ДОСТУПНО</h1>
-    <h1>Вход</h1>
-    <form action="${pageContext.request.contextPath}/not_available" method="post">
-        <label for="email">Электронная почта:</label><br>
-        <input type="email" id="email" name="email" required><br><br>
 
-        <label for="password">Пароль:</label><br>
-        <input type="password" id="password" name="password" required><br><br>
+<jsp:include page="header.jsp" />
 
-        <button type="submit">Войти</button>
+<div class="login-container">
+    <h1 class="page-title">TEMPORARILY UNAVAILABLE</h1>
+    <h2 class="login-heading">Login</h2>
+
+    <form action="${pageContext.request.contextPath}/not_available" method="post" class="login-form">
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required placeholder="Enter your email">
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required placeholder="Enter your password">
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="login-button">Login</button>
+        </div>
     </form>
-    <p>Нет аккаунта? <a href="registration.jsp">Зарегистрироваться</a></p>
-    <jsp:include page="footer.html" />
+
+    <p class="register-link">Don't have an account? <a href="registration.jsp">Register</a></p>
+</div>
+
+<jsp:include page="footer.html" />
+
 </body>
 </html>

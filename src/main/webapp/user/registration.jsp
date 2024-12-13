@@ -1,35 +1,61 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<html lang="en">
 <head>
-    <title>Title</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/style_registration.css">
 </head>
 <body>
-  <jsp:include page="header.jsp" />
-  <h1> Скоро доступно </h1>
-  <h1>Регистрация</h1>
-  <form action="${pageContext.request.contextPath}/not_available" method="post">
-    <label for="firstName">Имя:</label><br>
-    <input type="text" id="firstName" name="firstName" required><br><br>
 
-    <label for="lastName">Фамилия:</label><br>
-    <input type="text" id="lastName" name="lastName" required><br><br>
+<jsp:include page="header.jsp" />
 
-    <label for="email">Электронная почта:</label><br>
-    <input type="email" id="email" name="email" required><br><br>
+<div class="registration-container">
+  <h1 class="page-title">TEMPORARILY UNAVAILABLE</h1>
+  <h2 class="registration-heading">Registration</h2>
 
-    <label for="phone">Номер телефона:</label><br>
-    <input type="tel" id="phone" name="phone" required><br><br>
+  <form action="${pageContext.request.contextPath}/not_available" method="post" class="registration-form">
+    <div class="form-group">
+      <label for="firstName">First Name:</label>
+      <input type="text" id="firstName" name="firstName" required placeholder="Enter your first name">
+    </div>
 
-    <label for="password">Пароль:</label><br>
-    <input type="password" id="password" name="password" required><br><br>
+    <div class="form-group">
+      <label for="lastName">Last Name:</label>
+      <input type="text" id="lastName" name="lastName" required placeholder="Enter your last name">
+    </div>
 
-    <label for="password">Подтвердите пароль:</label><br>
-    <input type="password" id="passwordCheck" name="passwordCheck" required><br><br>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required placeholder="Enter your email">
+    </div>
 
+    <div class="form-group">
+      <label for="phone">Phone Number:</label>
+      <input type="tel" id="phone" name="phone" required placeholder="Enter your phone number">
+    </div>
 
-    <button type="submit">Зарегистрироваться</button>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required placeholder="Enter your password">
+    </div>
+
+    <div class="form-group">
+      <label for="passwordCheck">Confirm Password:</label>
+      <input type="password" id="passwordCheck" name="passwordCheck" required placeholder="Confirm your password">
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="register-button">Register</button>
+    </div>
   </form>
-  <p>Уже есть аккаунт? <a href="login.jsp">Войти</a></p>
-  <jsp:include page="footer.html" />
+
+  <p class="login-link">Already have an account? <a href="login.jsp">Login</a></p>
+</div>
+
+<jsp:include page="footer.html" />
+
 </body>
 </html>
+``

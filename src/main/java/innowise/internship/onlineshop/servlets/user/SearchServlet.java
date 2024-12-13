@@ -1,5 +1,6 @@
 package innowise.internship.onlineshop.servlets.user;
 
+import innowise.internship.onlineshop.services.CategoryService;
 import innowise.internship.onlineshop.services.ProductService;
 import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
@@ -14,8 +15,11 @@ import java.io.IOException;
 public class SearchServlet extends HttpServlet {
     @Inject
     private ProductService productService;
+    @Inject
+    private CategoryService categoryService;
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String searchParam = request.getParameter("search");
+        request.setAttribute("categories", categoryService.getAll());
         request.setAttribute("products", productService.search(searchParam));
         getServletContext().getRequestDispatcher("/user/index.jsp").forward(request, response);
     }

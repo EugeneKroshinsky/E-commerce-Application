@@ -1,0 +1,87 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+.order-success-container {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size: 28px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 24px;
+    color: #555;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.order-details,
+.order-items,
+.order-total {
+    margin-bottom: 30px;
+}
+
+.order-details p,
+.order-items p,
+.order-total p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.order-items .order-item {
+    margin-bottom: 20px;
+}
+
+.order-items .order-item hr {
+    margin: 10px 0;
+    border: 1px solid #ddd;
+}
+
+.order-details p,
+.order-items p,
+.order-total p {
+    margin: 5px 0;
+}
+
+.order-items p strong,
+.order-details p strong,
+.order-total p strong {
+    font-weight: bold;
+    color: #333;
+}
+
+.order-total {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-top: 20px;
+}
+
+.return-link {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.return-link a {
+    font-size: 16px;
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.return-link a:hover {
+    text-decoration: underline;
+}
+
