@@ -29,7 +29,6 @@ public class FilterServlet extends HttpServlet {
         List<ProductDto> products =  productService.filter(productFilter);
         request.setAttribute("products", products);
         request.setAttribute("categories", categoryService.getAll());
-        request.setAttribute("filterDto", productFilter);
-        request.getRequestDispatcher("/user/index.jsp").forward(request, response);
-    }
+        request.setAttribute("productFilter", productFilter);
+        getServletContext().getRequestDispatcher("/user/index.jsp").forward(request, response);    }
 }

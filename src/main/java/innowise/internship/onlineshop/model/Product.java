@@ -45,11 +45,14 @@ public class Product {
     @ManyToMany(mappedBy = "products")
     private List<Cart> cart;
 
+    @OneToMany(mappedBy = "product")
+    private List<OrderItem> orderItems;
+
+    @Column(name = "producer")
+    private String producer;
+
     @PrePersist
     private void onCreate() {
         this.createdAt = LocalDateTime.now();
     }
-
-    @OneToMany(mappedBy = "product")
-    private List<OrderItem> orderItems;
 }

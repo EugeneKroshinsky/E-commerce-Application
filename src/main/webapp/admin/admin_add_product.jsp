@@ -13,6 +13,11 @@
     <input type="text" id="name" name="name" required>
     <br><br>
 
+    <label for="producer">Producer:</label>
+    <input type="text" id="producer" name="producer" required>
+    <br><br>
+
+
     <label for="description">Description:</label>
     <textarea id="description" name="description" rows="4" required></textarea>
     <br><br>

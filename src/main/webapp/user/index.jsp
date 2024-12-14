@@ -80,6 +80,7 @@
                     <div class="product-details">
                         <a href="${pageContext.request.contextPath}/product/${product.id}" class="product-name">${product.name}</a>
                         <div class="product-price">${product.price}$</div>
+                        <div class="product-producer">${product.producer}</div>
                         <div class="product-quantity">Quantity: ${product.quantity}</div>
                         <div class="product-category">${product.category.name}</div>
 

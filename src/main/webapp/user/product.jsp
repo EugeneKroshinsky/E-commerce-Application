@@ -23,6 +23,7 @@
         </div>
         <div class="product-info">
             <p><strong>Name:</strong> ${product.name}</p>
+            <p><strong>Producer:</strong> ${product.producer}</p>
             <p><strong>Description:</strong> ${product.description}</p>
             <p><strong>Price:</strong> ${product.price}$</p>
             <p><strong>Quantity Available:</strong> ${product.quantity}</p>

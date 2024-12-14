@@ -25,6 +25,8 @@ public class ProductDto {
     @Min(value = 0, message = "Quantity must be greater than 0")
     private int quantity;
 
+    private String producer;
+
     private Long categoryId;
     private CategoryDto category;
     private String imageUrl;

@@ -8,12 +8,17 @@
 <a href="javascript:history.back()">Back</a>
 <h1>Edit Product</h1>
 
-<form action="${pageContext.request.contextPath}/admin/update/product" method="post">
+<form action="${pageContext.request.contextPath}/admin/update/product" method="post" enctype="multipart/form-data">
     <input type="hidden" name="id" value="${product.id}">
 
     <label for="name">Product Name:</label>
     <input type="text" id="name" name="name" value="${product.name}" required>
     <br><br>
+
+    <label for="producer">Producer:</label>
+    <input type="text" id="producer" name="producer" value="${product.producer}" required>
+    <br><br>
+
 
     <label for="description">Description:</label>
     <textarea id="description" name="description" rows="4" required>${product.description}</textarea>
@@ -39,6 +44,9 @@
     </select>
     <br><br>
 
+    <label for="fileInput">Загрузите файл:</label>
+    <input type="file" id="fileInput" name="file">
+    <br>
     <button type="submit">Update Product</button>
 </form>
 </body>
