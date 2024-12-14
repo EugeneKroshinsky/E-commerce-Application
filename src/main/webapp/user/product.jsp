@@ -14,11 +14,12 @@
 </div>
 
 <div class="product-container">
-    <h1 class="page-title">Product Details</h1>
 
+
+    </div>
     <div class="product-details">
         <div class="product-image">
-            <img src="${product.imageUrl}" alt="${product.name}" />
+            <img src="${pageContext.request.contextPath}/${product.imageUrl}" alt="product-image" />
         </div>
         <div class="product-info">
             <p><strong>Name:</strong> ${product.name}</p>

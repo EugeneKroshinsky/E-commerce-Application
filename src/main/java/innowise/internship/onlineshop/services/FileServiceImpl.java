@@ -1,30 +1,36 @@
 package innowise.internship.onlineshop.services;
 
-import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.Part;
 
+import java.io.File;
 import java.io.IOException;
-import java.nio.file.Paths;
 
 public class FileServiceImpl implements FileService {
-    private final static String UPLOAD_DIR = "uploads/";
+    private final static String UPLOAD_DIR = "uploads";
+
     @Override
     public String uploadFile(HttpServletRequest request) {
-//        String uploadDir = null;
-//        try {
-//            request.getParameter("id");
-//            Part filePart = request.getPart("file");
-//            String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
-//            uploadDir = UPLOAD_DIR + fileName;
-//            filePart.write(uploadDir);
-//        } catch (IOException | ServletException e) {
-//            throw new RuntimeException("Ошибка при загрузке файла: " + e.getMessage(), e);
-//        }
-
-        //return uploadDir;
-        throw new UnsupportedOperationException("Not implemented yet");
+        try {
+            if (request.getPart("file").getSubmittedFileName().isEmpty()) {
+                return null;
+            }
+            String uploadPath = request.getServletContext().getRealPath("") + File.separator + UPLOAD_DIR;
+            File uploadDir = new File(uploadPath);
+            if (!uploadDir.exists()) {
+                uploadDir.mkdir();
+            }
+            Part part = request.getPart("file");
+            String fileName = part.getSubmittedFileName();
+            String uploadFileName = uploadPath + File.separator + fileName;
+            part.write(uploadFileName);
+            return UPLOAD_DIR + File.separator + fileName;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ServletException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }
