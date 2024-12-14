@@ -1,12 +1,10 @@
 package innowise.internship.onlineshop.services.base;
 
 import innowise.internship.onlineshop.repository.base.BaseRepository;
-import innowise.internship.onlineshop.utils.HibernateUtil;
 import jakarta.inject.Inject;
 import lombok.Getter;
 import org.dozer.DozerBeanMapper;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 
 import java.util.List;
 

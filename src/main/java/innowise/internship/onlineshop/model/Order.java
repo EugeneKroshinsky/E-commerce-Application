@@ -6,7 +6,6 @@ import lombok.*;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.StringJoiner;
-import java.util.UUID;
 
 @Getter
 @Setter
@@ -54,6 +53,23 @@ public class Order {
     @PrePersist
     private void onCreate() {
         this.createdAt = LocalDateTime.now();
+    }
+
+    @Override
+    public String toString() {
+        return new StringJoiner(", ", Order.class.getSimpleName() + "[", "]")
+                .add("id=" + id)
+                .add("user=" + user)
+                .add("firstName='" + firstName + "'")
+                .add("lastName='" + lastName + "'")
+                .add("phone='" + phone + "'")
+                .add("email='" + email + "'")
+                .add("address='" + address + "'")
+                .add("comment='" + comment + "'")
+                .add("status='" + status + "'")
+                .add("createdAt=" + createdAt)
+                .add("orderItems=" + orderItems.stream().map(el -> el.getProduct().getId()).toList())
+                .toString();
     }
 }
 

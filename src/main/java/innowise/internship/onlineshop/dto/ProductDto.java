@@ -5,6 +5,8 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
 
+import java.util.List;
+
 
 @ToString
 @EqualsAndHashCode

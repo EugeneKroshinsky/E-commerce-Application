@@ -17,7 +17,9 @@
         <th>Email</th>
         <th>Phone</th>
         <th>Address</th>
+        <th>Date</th>
         <th>Total Price</th>
+        <th>Order Items</th>
     </tr>
     </thead>
     <tbody>
@@ -29,7 +31,33 @@
             <td>${order.email}</td>
             <td>${order.phone}</td>
             <td>${order.address}</td>
+            <td>${order.createdAt}</td>
             <td>${order.orderItems.stream().map(item -> item.product.price * item.quantity).sum()}</td>
+            <td>
+                <table border="1" cellpadding="5">
+                    <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total Price</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach var="item" items="${order.orderItems}">
+                        <tr>
+                            <td>${item.product.name}</td>
+                            <td>${item.product.description}</td>
+                            <td>${item.product.price}</td>
+                            <td>${item.quantity}</td>
+                            <td>${item.product.price * item.quantity}</td>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
     </c:forEach>
     </tbody>
 </table>

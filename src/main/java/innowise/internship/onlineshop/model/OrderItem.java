@@ -3,9 +3,7 @@
     import jakarta.persistence.*;
     import lombok.*;
 
-    import java.util.StringJoiner;
-    import java.util.UUID;
-
+    @ToString
     @Getter
     @Setter
     @AllArgsConstructor
@@ -28,4 +26,5 @@
 
         @Column(nullable = false)
         private int quantity;
+
     }

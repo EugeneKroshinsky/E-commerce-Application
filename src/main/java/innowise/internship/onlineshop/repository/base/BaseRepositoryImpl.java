@@ -26,7 +26,7 @@ public abstract class BaseRepositoryImpl<T> implements BaseRepository<T> {
     public void save(T object) {
         try (Session session = sessionFactory.getCurrentSession()) {
             session.beginTransaction();
-            save(object,session);
+            save(object, session);
             session.getTransaction().commit();
         }
     }

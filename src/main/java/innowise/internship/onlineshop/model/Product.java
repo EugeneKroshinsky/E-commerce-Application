@@ -52,6 +52,6 @@ public class Product {
         this.createdAt = LocalDateTime.now();
     }
 
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "product")
     private List<OrderItem> orderItems;
 }

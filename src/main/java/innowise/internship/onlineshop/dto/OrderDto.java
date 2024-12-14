@@ -4,6 +4,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @ToString
@@ -34,4 +35,7 @@ public class OrderDto {
 
     @NotEmpty(message = "Address is required")
     private String address;
+
+    private String createdAt;
+
 }
