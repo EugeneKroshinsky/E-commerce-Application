@@ -35,14 +35,14 @@ public class ManagerUpdateProductServlet extends HttpServlet {
         Long id = ParsePathUtil.parsePathLong(request);
         request.setAttribute("product", productService.getById(id));
         request.setAttribute("categories", categoryService.getAll());
-        getServletContext().getRequestDispatcher("/admin/manager_update_product.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/manager/manager_update_product.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws IOException {
+            throws IOException, ServletException {
         ProductDto productDto = productMapper.toDto(request);
         productService.update(productDto);
-        response.sendRedirect(request.getContextPath() + "/admin/product");
+        getServletContext().getRequestDispatcher("/manager/manager_product.jsp").forward(request, response);
     }
 }

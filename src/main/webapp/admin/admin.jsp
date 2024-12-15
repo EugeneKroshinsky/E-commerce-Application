@@ -31,7 +31,7 @@
 
 <h1>Users List</h1>
 
-<%--<a href="${pageContext.request.contextPath}/manager/add/user">Create New Admin</a>--%>
+<a href="${pageContext.request.contextPath}/admin/add">Create New Admin</a>
 
 <table>
     <thead>

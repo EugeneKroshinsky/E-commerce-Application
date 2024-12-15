@@ -9,5 +9,6 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RoleDto {
+    private Long id;
     private String name;
 }

@@ -1,6 +1,5 @@
 package innowise.internship.onlineshop.dto;
 
-import innowise.internship.onlineshop.model.Role;
 import lombok.*;
 
 import java.util.List;

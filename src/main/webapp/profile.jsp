@@ -240,7 +240,7 @@
 <c:if test="${user.roles.stream()
                 .map(el -> el.getName())
                 .toList()
-                .contains('MANGER')}">
+                .contains('MANAGER')}">
         <div class="manager-link">
             <a href="${pageContext.request.contextPath}/manager">Manage products and orders</a>
         </div>
