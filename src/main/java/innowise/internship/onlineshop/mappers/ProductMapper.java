@@ -18,6 +18,7 @@ public class ProductMapper {
     private EntityManager entityManager;*/
     @Inject
     private FileService fileService;
+
     public ProductDto toDto(HttpServletRequest request) {
         try {
             ProductDto productDto = new ProductDto();
@@ -26,7 +27,13 @@ public class ProductMapper {
             categoryDto.setId(productDto.getCategoryId());
             productDto.setCategory(categoryDto);
             String uploadDir = fileService.uploadFile(request);
-            productDto.setImageUrl(uploadDir);
+            if (uploadDir != null){
+                productDto.setImageUrl(uploadDir);
+            } else {
+                productDto.setImageUrl(request.getParameter("previousFile"));
+            }
+
+
             return productDto;
         } catch (IllegalAccessException | InvocationTargetException e) {
             throw new RuntimeException(e);

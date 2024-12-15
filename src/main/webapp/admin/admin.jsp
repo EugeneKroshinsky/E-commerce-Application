@@ -5,6 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
     <title>Users Table</title>
     <style>
         table {
@@ -28,10 +29,13 @@
     </style>
 </head>
 <body>
+<div class="header">
+    <jsp:include page="/user/header.jsp" />
+</div>
 
 <h1>Users List</h1>
 
-<a href="${pageContext.request.contextPath}/admin/add">Create New Admin</a>
+<a href="${pageContext.request.contextPath}/admin/add">Create New Admin/Manager</a>
 
 <table>
     <thead>

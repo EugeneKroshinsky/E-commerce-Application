@@ -5,6 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
     <title>Add New User</title>
     <style>
         form {
@@ -32,6 +33,9 @@
     </style>
 </head>
 <body>
+<div class="header">
+    <jsp:include page="/user/header.jsp" />
+</div>
 
 <h1 style="text-align: center;">Add New User</h1>
 

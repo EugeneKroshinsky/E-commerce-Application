@@ -2,6 +2,8 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <html>
 <head>
+    <link rel="stylesheet" href="../css/style.css"> <link rel="stylesheet" href="css/style.css">
+
     <title>All Orders</title>
     <style>
         table {
@@ -25,6 +27,9 @@
     </style>
 </head>
 <body>
+<div class="header">
+    <jsp:include page="/user/header.jsp" />
+</div>
 <a href="javascript:history.back()">Back</a>
 <h1>All Orders</h1>
 
