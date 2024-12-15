@@ -27,9 +27,9 @@ public class FileServiceImpl implements FileService {
             part.write(uploadFileName);
             return UPLOAD_DIR + File.separator + fileName;
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            return null;
         } catch (ServletException e) {
-            throw new RuntimeException(e);
+            return null;
         }
     }
 

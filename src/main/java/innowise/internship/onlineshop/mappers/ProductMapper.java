@@ -32,8 +32,6 @@ public class ProductMapper {
             } else {
                 productDto.setImageUrl(request.getParameter("previousFile"));
             }
-
-
             return productDto;
         } catch (IllegalAccessException | InvocationTargetException e) {
             throw new RuntimeException(e);

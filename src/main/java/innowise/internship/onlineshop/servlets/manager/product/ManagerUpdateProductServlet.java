@@ -43,6 +43,6 @@ public class ManagerUpdateProductServlet extends HttpServlet {
             throws IOException, ServletException {
         ProductDto productDto = productMapper.toDto(request);
         productService.update(productDto);
-        getServletContext().getRequestDispatcher("/manager/manager_product.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/manager/manager.jsp").forward(request, response);
     }
 }

@@ -29,6 +29,7 @@ public class ProductRepositoryImpl extends BaseRepositoryImpl<Product> implement
             session.getTransaction().commit();
             return products;
         }
+
     }
 
     //не самый лучший код, но чтобы работало

@@ -5,6 +5,7 @@ import innowise.internship.onlineshop.dto.UserDto;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.beanutils.BeanUtils;
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
@@ -17,9 +18,6 @@ public class UserMapper {
             UserDto userDto = new UserDto();
             BeanUtils.populate(userDto, request.getParameterMap());
             String[] rolesId = request.getParameterValues("list_roles");
-/*            RoleDto roleDto = new RoleDto();
-            roleDto.setId(Long.parseLong(roles));
-            userDto.setRoles(List.of(roleDto));*/
             List<RoleDto> roleDtos = new ArrayList<>();
             for (String id : rolesId) {
                 RoleDto roleDto = new RoleDto();

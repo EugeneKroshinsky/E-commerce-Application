@@ -43,7 +43,6 @@ public abstract class BaseRepositoryImpl<T> implements BaseRepository<T> {
     @Override
     public List<T> getAll() {
         //БЕЗ ТРАНЗАКЦИИ НЕ РАБОТАЕТ
-
         try (Session session = sessionFactory.getCurrentSession()) {
             session.beginTransaction();
             return getAll(session);

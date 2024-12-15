@@ -37,9 +37,9 @@ public class ManagerAddProductServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws IOException {
+            throws IOException, ServletException {
         ProductDto productDto = productMapper.toDto(request);
         productService.save(productDto);
-        response.sendRedirect(request.getContextPath() + "/admin/product");
+        getServletContext().getRequestDispatcher("/manager/manager.jsp").forward(request, response);
     }
 }
