@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Registration</title>
-  <link rel="stylesheet" href="../css/style.css">
-  <link rel="stylesheet" href="../css/style_registration.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style_registration.css">
 </head>
 <body>
 
@@ -51,10 +51,12 @@
     </div>
   </form>
 
-  <p class="login-link">Already have an account? <a href="login.jsp">Login</a></p>
+  <p class="login-link">Already have an account? <a href="${pageContext.request.contextPath}/login">Login</a></p>
 </div>
 
-<jsp:include page="footer.html" />
+<div class="footer">
+  <jsp:include page="footer.html" />
+</div>
 
 </body>
 </html>

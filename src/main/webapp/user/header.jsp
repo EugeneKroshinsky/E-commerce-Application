@@ -8,7 +8,7 @@
             <ul>
                 <li><a href="${pageContext.request.contextPath}/cart">Cart</a></li>
                 <li><a href="${pageContext.request.contextPath}/contact">Contact</a></li>
-                <li><a href="user/registration.jsp">Profile</a></li>
+                <li><a href="${pageContext.request.contextPath}/auth/profile">Profile</a></li>
             </ul>
         </nav>
     </div>

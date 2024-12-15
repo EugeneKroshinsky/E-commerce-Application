@@ -3,9 +3,7 @@ package innowise.internship.onlineshop.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 @Getter
 @Setter
@@ -19,11 +17,15 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Enumerated(EnumType.STRING)
     @Column(name = "name", nullable = false, unique = true)
-    private UserRoles userRoles;
+    private String name;
 
     @ManyToMany(mappedBy = "roles")
-    private Set<User> users = new HashSet<>();
+    private List<User> users;
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }
 

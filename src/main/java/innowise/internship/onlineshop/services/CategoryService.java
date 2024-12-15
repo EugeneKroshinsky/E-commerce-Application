@@ -5,6 +5,7 @@ import innowise.internship.onlineshop.services.base.BaseService;
 
 import java.util.List;
 
-public interface CategoryService extends BaseService<CategoryDto, CategoryDto, CategoryDto> {
+public interface CategoryService
+        extends BaseService<CategoryDto, CategoryDto, CategoryDto> {
 
 }

@@ -5,9 +5,11 @@ import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
+@ToString
 @Getter
 @Setter
 @AllArgsConstructor
@@ -41,7 +43,7 @@ public class User {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
-    private Set<Role> roles;
+    private List<Role> roles;
 
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
@@ -49,8 +51,8 @@ public class User {
     @OneToOne(mappedBy = "user")
     private Cart cart;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Order> orders = new HashSet<>();
+    @OneToMany(mappedBy = "user")
+    private List<Order> orders;
 
     @PrePersist
     private void onCreate() {

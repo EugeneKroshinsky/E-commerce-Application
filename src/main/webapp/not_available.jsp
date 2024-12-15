@@ -7,6 +7,8 @@
     <jsp:include page="user/header.jsp" />
     <h1> Временно не доступно </h1>
     <a href="${pageContext.request.contextPath}/mainPage"> На главную </a>
-    <jsp:include page="user/footer.html" />
+    <div class="footer">
+        <jsp:include page="user/footer.html" />
+    </div>
 </body>
 </html>

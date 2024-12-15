@@ -57,7 +57,9 @@
     </c:if>
 </div>
 
-<jsp:include page="footer.html" />
+<div class="footer">
+    <jsp:include page="footer.html" />
+</div>
 
 </body>
 </html>
