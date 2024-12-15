@@ -16,13 +16,13 @@ public class AdminFilter implements Filter {
                          ServletResponse servletResponse,
                          FilterChain filterChain)
             throws IOException, ServletException {
-        HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
-        HttpServletResponse httpServletResponse = (HttpServletResponse) servletResponse;
-        HttpSession session = httpServletRequest.getSession();
+        HttpServletRequest request = (HttpServletRequest) servletRequest;
+        HttpServletResponse response = (HttpServletResponse) servletResponse;
+        HttpSession session = request.getSession();
         if (session != null && session.getAttribute("user") != null) {
             filterChain.doFilter(servletRequest, servletResponse);
         } else {
-            httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/login");
+            response.sendRedirect(request.getContextPath() + "/login");
         }
     }
 }

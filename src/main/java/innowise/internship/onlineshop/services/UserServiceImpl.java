@@ -4,12 +4,13 @@ import innowise.internship.onlineshop.dto.UserDto;
 import innowise.internship.onlineshop.model.User;
 import innowise.internship.onlineshop.repository.UserRepository;
 import innowise.internship.onlineshop.services.base.BaseServiceImpl;
+import jakarta.data.exceptions.MappingException;
 import jakarta.inject.Inject;
 
 import java.util.Optional;
 
 public class UserServiceImpl extends BaseServiceImpl<UserDto, UserDto, UserDto, User> implements UserService {
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
     @Inject
     public UserServiceImpl(UserRepository repository) {
         super(UserDto.class, repository);
@@ -17,7 +18,11 @@ public class UserServiceImpl extends BaseServiceImpl<UserDto, UserDto, UserDto, 
     }
 
     public Optional<UserDto> authenticate(String login, String password) {
-        return Optional.of(getMapper()
-                .map(userRepository.findByEmailAndPassword(login, password), UserDto.class));
+            User user = userRepository.findByEmailAndPassword(login, password);
+            if (user == null) {
+                return Optional.empty();
+            } else {
+                return Optional.of(getMapper().map(user, UserDto.class));
+            }
     }
 }
