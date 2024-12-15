@@ -1,5 +1,6 @@
 package innowise.internship.onlineshop.servlets;
 
+
 import innowise.internship.onlineshop.dto.UserDto;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
@@ -9,8 +10,8 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-@WebFilter(value = {"/admin/*"})
-public class AdminFilter implements Filter {
+@WebFilter(value = {"/manager/*"})
+public class ManagerFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest,
                          ServletResponse servletResponse,
@@ -19,13 +20,12 @@ public class AdminFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         HttpSession session = request.getSession();
-
         if (session != null && session.getAttribute("user") != null) {
             UserDto userDto = (UserDto) session.getAttribute("user");
             if (userDto.getRoles().stream()
                     .map(el -> el.getName())
                     .toList()
-                    .contains("ADMIN")) {
+                    .contains("MANAGER")) {
                 filterChain.doFilter(servletRequest, servletResponse);
                 response.sendRedirect(request.getContextPath() + "/profile");
             } else {
@@ -38,4 +38,3 @@ public class AdminFilter implements Filter {
         }
     }
 }
-

@@ -226,7 +226,7 @@
         <p><strong>Roles:</strong></p>
         <ul>
             <c:forEach var="role" items="${user.roles}">
-                <li>${role}</li>
+                <li>${role.name}</li>
             </c:forEach>
         </ul>
     </div>
@@ -237,9 +237,20 @@
         </form>
     </div>
 
-    <c:if test="${user.roles.contains('MANAGER')}">
+<c:if test="${user.roles.stream()
+                .map(el -> el.getName())
+                .toList()
+                .contains('MANGER')}">
         <div class="manager-link">
-            <a href="${pageContext.request.contextPath}/manager">Manage</a>
+            <a href="${pageContext.request.contextPath}/manager">Manage products and orders</a>
+        </div>
+    </c:if>
+    <c:if test="${user.roles.stream()
+                .map(el -> el.getName())
+                .toList()
+                .contains('ADMIN')}">
+        <div class="manager-link">
+            <a href="${pageContext.request.contextPath}/admin">Manage users</a>
         </div>
     </c:if>
 

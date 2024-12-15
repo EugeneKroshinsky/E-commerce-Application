@@ -2,11 +2,13 @@ package innowise.internship.onlineshop.repository.base;
 
 import innowise.internship.onlineshop.utils.HibernateUtil;
 import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import java.util.List;
 
+@Slf4j
 @Getter
 public abstract class BaseRepositoryImpl<T> implements BaseRepository<T> {
     private final SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
@@ -35,11 +37,13 @@ public abstract class BaseRepositoryImpl<T> implements BaseRepository<T> {
         List<T> objects = session
                 .createQuery("from " + type.getSimpleName(), type)
                 .getResultList();
+        log.info("objects: {}", objects);
         return objects;
     }
     @Override
     public List<T> getAll() {
         //БЕЗ ТРАНЗАКЦИИ НЕ РАБОТАЕТ
+
         try (Session session = sessionFactory.getCurrentSession()) {
             session.beginTransaction();
             return getAll(session);
