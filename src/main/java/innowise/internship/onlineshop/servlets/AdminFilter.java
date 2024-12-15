@@ -1,6 +1,7 @@
 package innowise.internship.onlineshop.servlets;
 
 
+import innowise.internship.onlineshop.dto.UserDto;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
@@ -9,7 +10,7 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-@WebFilter(value = {"/admin/*"})
+@WebFilter(value = {"/manager/*"})
 public class AdminFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest,
@@ -20,6 +21,14 @@ public class AdminFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         HttpSession session = request.getSession();
         if (session != null && session.getAttribute("user") != null) {
+            UserDto userDto = (UserDto) session.getAttribute("user");
+            if (userDto.getRoles().contains("MANAGER")) {
+                filterChain.doFilter(servletRequest, servletResponse);
+                response.sendRedirect(request.getContextPath() + "/profile");
+            } else {
+                request.setAttribute("error", "You don't have permission to access this page");
+                request.getRequestDispatcher("/error.jsp").forward(request, response);
+            }
             filterChain.doFilter(servletRequest, servletResponse);
         } else {
             response.sendRedirect(request.getContextPath() + "/login");

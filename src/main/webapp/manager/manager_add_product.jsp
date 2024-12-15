@@ -8,7 +8,7 @@
 <a href="javascript:history.back()">Back</a>
 <h1>Create New Product</h1>
 
-<form action="${pageContext.request.contextPath}/admin/add/product" method="post" enctype="multipart/form-data" >
+<form action="${pageContext.request.contextPath}/manager/add/product" method="post" enctype="multipart/form-data" >
     <label for="name">Product Name:</label>
     <input type="text" id="name" name="name" required>
     <br><br>

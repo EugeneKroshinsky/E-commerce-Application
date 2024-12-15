@@ -1,4 +1,4 @@
-package innowise.internship.onlineshop.servlets.admin.product;
+package innowise.internship.onlineshop.servlets.manager.product;
 
 import innowise.internship.onlineshop.services.ProductService;
 import jakarta.inject.Inject;
@@ -10,8 +10,8 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(value = "/admin/product")
-public class AdminProductServlet extends HttpServlet {
+@WebServlet(value = "/manager/product")
+public class ManagerProductServlet extends HttpServlet {
     @Inject
     private ProductService productService;
 
@@ -19,13 +19,13 @@ public class AdminProductServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setAttribute("products", productService.getAll());
-        request.getRequestDispatcher("/admin/admin_product.jsp").forward(request, response);
+        request.getRequestDispatcher("/manager/manager_product.jsp").forward(request, response);
     }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws  IOException {
         Long productId = Long.parseLong(request.getParameter("id"));
         productService.delete(productId);
-        response.sendRedirect(request.getContextPath() + "/admin/product");
+        response.sendRedirect(request.getContextPath() + "/manager/product");
     }
 }

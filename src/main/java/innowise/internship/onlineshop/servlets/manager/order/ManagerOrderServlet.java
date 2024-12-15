@@ -1,4 +1,4 @@
-package innowise.internship.onlineshop.servlets.admin.order;
+package innowise.internship.onlineshop.servlets.manager.order;
 
 import innowise.internship.onlineshop.services.OrderService;
 import jakarta.inject.Inject;
@@ -7,13 +7,12 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 
 
-@WebServlet(value = "/admin/order")
-public class AdminOrderServlet extends HttpServlet {
+@WebServlet(value = "/manager/order")
+public class ManagerOrderServlet extends HttpServlet {
     @Inject
     private OrderService orderService;
 
@@ -21,6 +20,6 @@ public class AdminOrderServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request,
                          HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("orders", orderService.getAll());
-        request.getRequestDispatcher("/admin/admin_orders.jsp").forward(request, response);
+        request.getRequestDispatcher("/manager/manager_orders.jsp").forward(request, response);
     }
 }

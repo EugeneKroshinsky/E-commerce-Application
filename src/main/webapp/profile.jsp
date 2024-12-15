@@ -162,11 +162,11 @@
             margin: 5px 0;
         }
 
-        .admin-link {
+        .manager-link {
             margin-top: 20px;
         }
 
-        .admin-link a {
+        .manager-link a {
             display: inline-block;
             padding: 10px 20px;
             background-color: #007BFF;
@@ -177,7 +177,7 @@
             text-transform: uppercase;
         }
 
-        .admin-link a:hover {
+        .manager-link a:hover {
             background-color: #0056b3;
         }
 
@@ -237,9 +237,9 @@
         </form>
     </div>
 
-    <c:if test="${user.roles.contains('ADMIN')}">
-        <div class="admin-link">
-            <a href="${pageContext.request.contextPath}/admin">Manage</a>
+    <c:if test="${user.roles.contains('MANAGER')}">
+        <div class="manager-link">
+            <a href="${pageContext.request.contextPath}/manager">Manage</a>
         </div>
     </c:if>
 

@@ -8,7 +8,7 @@
 <a href="javascript:history.back()">Back</a>
 <h1>Product Management</h1>
 
-<a href="${pageContext.request.contextPath}/admin/add/product">Create New Product</a>
+<a href="${pageContext.request.contextPath}/manager/add/product">Create New Product</a>
 
 <table border="1" cellpadding="10" cellspacing="0">
     <thead>
@@ -32,12 +32,12 @@
             <td>${product.quantity}</td>
             <td>${product.category.name}</td>
             <td>
-                <form action="${pageContext.request.contextPath}/admin/product" method="POST" style="display: inline;">
+                <form action="${pageContext.request.contextPath}/manager/product" method="POST" style="display: inline;">
                     <input type="hidden" name="action" value="delete">
                     <input type="hidden" name="id" value="${product.id}">
                     <button type="submit">Delete</button>
                 </form>
-                <form action="${pageContext.request.contextPath}/admin/update/product/${product.id}" method="GET" style="display: inline;">
+                <form action="${pageContext.request.contextPath}/manager/update/product/${product.id}" method="GET" style="display: inline;">
                     <button type="submit">Edit</button>
                 </form>
             </td>

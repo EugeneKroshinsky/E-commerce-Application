@@ -8,7 +8,7 @@
 <a href="javascript:history.back()">Back</a>
 <h1>Edit Product</h1>
 
-<form action="${pageContext.request.contextPath}/admin/update/product" method="post" enctype="multipart/form-data">
+<form action="${pageContext.request.contextPath}/manager/update/product" method="post" enctype="multipart/form-data">
     <input type="hidden" name="id" value="${product.id}">
 
     <label for="name">Product Name:</label>

@@ -1,4 +1,4 @@
-package innowise.internship.onlineshop.servlets.admin;
+package innowise.internship.onlineshop.servlets.manager;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -8,11 +8,11 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet("/admin")
-public class AdminServlet extends HttpServlet {
+@WebServlet("/manager")
+public class ManagerServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("/admin/admin.jsp").forward(request, response);
+        request.getRequestDispatcher("/manager/manager.jsp").forward(request, response);
     }
 }
